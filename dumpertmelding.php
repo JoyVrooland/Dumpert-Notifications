@@ -16,9 +16,10 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
     $headlines = array();
 
     $links = array();
+    $embed = array();
 
     $ch=curl_init();
-    curl_setopt($ch, CURLOPT_URL,'https://www.dumpert.nl');
+    curl_setopt($ch, CURLOPT_URL,'https://www.dumpert.nl/filmpjes/');
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
@@ -32,8 +33,8 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
 
     foreach($html->find('a[class=dumpthumb]') as $link){
         $unfiltered = $link->href;
-        $links[] = str_replace('mediabase', 'embed', $unfiltered);
-//        $links[] = $link->href;
+        $embed[] = str_replace('mediabase', 'embed', $unfiltered);
+        $links[] = $link->href;
     }
 
     foreach($html->find('div.details > h1') as $header) {
@@ -48,13 +49,18 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
         if($result){
             $diff = array_diff($array,$headlines);
             if(sizeof($diff) > 0){
-                echo '<audio controls autoplay hidden="" src="alert.mp3" type ="audio/mp3"">your browser does not support Html5</audio>';
-                echo "<script>popmelding();</script>";
+                echo '<audio class="audiofile" controls autoplay hidden="" src="alert.mp3" type="audio/mp3">your browser does not support Html5</audio>';
+                echo "<script>popmelding();
+                        setTimeout(function() {
+                          $('.audiofile').remove();
+                        }, 1000);</script>";
             }
             echo 'Lijstje: <br>';
             echo '<br>';
             for($x = 0; $x < sizeof($links); $x++){
-                echo '<a href="'.$links[$x].'" target="_blank">' .$headlines[$x] . "</a><br>";
+                echo '<a id="'.$x.'" class="linkbtn" href="#">' .$headlines[$x] . "</a><br>";
+                echo '<p class="hidden" id="link'.$x.'">'.$embed[$x].'</p>';
+                echo '<p class="hidden" id="info'.$x.'">'.$links[$x].'</p>';
             }
 
         }
