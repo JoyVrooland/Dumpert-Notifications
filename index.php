@@ -93,7 +93,7 @@
                 $('#vidplayer').attr('src', val);
                 $('.lijst').hide();
                 $('.framelist').show();
-                window.resizeTo(897,500);
+                window.resizeTo(800,500);
             });
             $(".info").click(function () {
                 if(count < 1){
