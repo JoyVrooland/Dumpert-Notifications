@@ -14,9 +14,14 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
     $updateresult = file_put_contents('dumpertlijst2.json', $updateoud);
 
     $headlines = array();
-
     $links = array();
     $embed = array();
+    $images = array();
+    $stats = array();
+    $desc = array();
+    $count = 0;
+    $dumbthumb = array();
+
 
     $ch=curl_init();
     curl_setopt($ch, CURLOPT_URL,'https://www.dumpert.nl/filmpjes/');
@@ -41,7 +46,20 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
         $headlines[] = $header->plaintext;
     }
 
-    $jsonarray = json_encode($headlines);
+    foreach($html->find('a[class=dumpthumb] img') as $image) {
+        $images[] = $image->getAttribute('src');
+    }
+
+    foreach($html->find('div.details p.stats') as $stat) {
+        $stats[] = $stat->plaintext;
+    }
+
+    foreach($html->find('div.details > p.description') as $description) {
+        $desc[] = $description->plaintext;
+    }
+
+
+$jsonarray = json_encode($headlines);
 
     if(sizeof($headlines) > 0){
 
@@ -55,13 +73,23 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
                           $('.audiofile').remove();
                         }, 1000);</script>";
             }
-            echo 'Lijstje: <br>';
-            echo '<br>';
             for($x = 0; $x < sizeof($links); $x++){
-                echo '<a id="'.$x.'" class="linkbtn" href="#">' .$headlines[$x] . "</a><br>";
+                echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn">
+                         <img src="'.$images[$x].'" alt="Sporten blijft slecht voor je" title="Sporten blijft slecht voor je" width="100" height="100">
+                         <div class="details">
+                             <h1>'.$headlines[$x].'</h1>
+                             <p class="stats">'.$stats[$x].'</p>
+                             <p class="description">'.$desc[$x].'</p>
+                         </div>
+                     </a>';
+//                echo '<a id="'.$x.'" class="linkbtn" href="#">' .$headlines[$x] . "</a><br>";
                 echo '<p class="hidden" id="link'.$x.'">'.$embed[$x].'</p>';
                 echo '<p class="hidden" id="info'.$x.'">'.$links[$x].'</p>';
             }
+//            for($a=0;$a<sizeof($array);$a++){
+//                $count++;
+//                array_push($dumbthumb, array('img' => $images[$a], 'title' => $headlines[$a], 'stats' => $stats[$a]));
+//            }
 
         }
     }else{

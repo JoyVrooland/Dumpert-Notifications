@@ -15,9 +15,6 @@
     <script src="push.js"></script>
 </head>
 <style>
-    *{
-        overflow: hidden;
-    }
     iframe {
         position: fixed;
         background: #000;
@@ -62,10 +59,92 @@
         width: 20px;
         cursor: pointer;
     }
+    a.dumpthumb .details {
+        position: absolute;
+        left: 118px;
+        top: 9px;
+        width: 65%;
+        word-wrap: break-word;
+        font-size: 0.76923em;
+        color: #8f8f8f;
+        max-height: 100px;
+        overflow: hidden;
+    }
+    a.dumpthumb:hover {
+        border: 1px solid #66c221;
+    }
+    a.dumpthumb img {
+        position: absolute;
+        left: 9px;
+        top: 9px;
+        height: 100px;
+        width: 100px;
+    }
 
+    a.dumpthumb {
+        position: relative;
+        display: block;
+        width: 98%;
+        height: 118px;
+        overflow: hidden;
+        margin: 0 4px 10px 4px;
+        border: 1px solid #e6e6e6;
+        margin: -1px 3px 9px 3px;
+        color: #000;
+        text-decoration: none;
+    }
+    a.dumpthumb .details h1 {
+        margin-bottom: 3px;
+        font-size: 1.3em;
+        line-height: 1.07692em;
+        max-height: 2.15385em;
+        overflow: hidden;
+        color: #000;
+    }
+    a.dumpthumb .details date, a.dumpthumb .details .stats {
+        font-size: 1em;
+        color: #8f8f8f;
+    }
 
+    a.dumpthumb p {
+        margin: 0;
+    }
+    a.dumpthumb .details .description {
+        margin-top: 3px;
+        font-size: 1.2em;
+        color: #000;
+    }
+    .content{
+        margin:0 auto;
+        width: 300px;
+        margin-top: 80px;
+    }
+    .ctabtn {
+        margin-top: 25px;
+        background-color: #2ecc71;
+        padding: 23px;
+        padding-left: 40px;
+        padding-right: 40px;
+        color: white;
+        border: none;
+        font-size: 1em;
+        margin-top: 40px;
+        font-size: 24px;
+    }
+    .ctabtn:hover{
+        background-color: #27ae60;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+    }
 </style>
 <body>
+<div class="notrunning">
+    <div class="content">
+        <img src="fav.png" width="300px">
+        <center><button class="ctabtn" onclick="javascript:window.open('http://localhost/Dumpert-Notifications/?running','Dumpert Notifications','width=400,height=500,resizable=1');">Start de applicatie</button></center>
+    </div>
+</div>
 <div class="lijst">
 </div>
 <div class="framelist">
@@ -81,7 +160,11 @@
     var count = 0;
 
     if(link === "?run"){
-        window.open('http://localhost/Dumpert-Notifications/','Dumpert Notifications','width=400,height=400,resizable=1');
+        window.open('http://localhost/Dumpert-Notifications/','Dumpert Notifications','width=400,height=500,resizable=1');
+    }else if(link === "?running"){
+        $('.notrunning').remove();
+    }else{
+        $('.lijst').remove();
     }
     function updatelist() {
         $.post("dumpertmelding.php", {}).done(function (data) {
@@ -108,6 +191,12 @@
     setInterval(function () {
         updatelist();
     }, 10000);
+
+    function updatecomment(site) {
+        $.post("dumpertcomments.php", {'site': site}).done(function () {
+
+        })
+    }
 
     function popmelding() {
         Push.create("Dumpert Notificatie",{
@@ -138,6 +227,7 @@
     });
 
 </script>
+
 
 </body>
 </html>

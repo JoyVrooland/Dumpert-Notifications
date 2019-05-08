@@ -39,5 +39,6 @@
         console.log(Push.Permission.has());
     });
 </script>
+<iframe src="https://comments.dumpert.nl/embed/7678421/d70d7ca5/comments/"></iframe>
 </body>
 </html>
