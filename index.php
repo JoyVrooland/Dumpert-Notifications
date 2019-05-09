@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +16,7 @@
     <script src="push.js"></script>
 </head>
 <style>
-    iframe {
+    .fullplayer {
         position: fixed;
         background: #000;
         border: none;
@@ -26,17 +26,50 @@
         height: 100%;
         z-index: -1;
     }
+    .commentpage{
+        position: fixed;
+        /*background: #000;*/
+        border: none;
+        right: 0;
+        bottom: 0; left: 0;
+        width: 100%;
+        height: 50%;
+        z-index: -1;
+    }
+    .dumpertembed{
+        position: fixed;
+        background: #000;
+        border: none;
+        top: 0; right: 0;
+        bottom: 0; left: 0;
+        width: 100%;
+        height: 50%;
+        z-index: -1;
+    }
     .hidden{
         display: none;
     }
     .framelist{
         display: none;
     }
-    .terug{
+    #terug{
+        cursor: pointer;
+    }
+    .terugfull{
         width: 91px;
         height: 30px;
         position: absolute;
         bottom: 12px;
+        left: 50%;
+        margin-left: -33px;
+        color: white;
+        display: none;
+    }
+    .terugsplit{
+        width: 91px;
+        height: 30px;
+        position: absolute;
+        bottom: 50%;
         left: 50%;
         margin-left: -33px;
         color: white;
@@ -243,15 +276,19 @@
     .radio.off .switch {
         left:-2px;
     }
+
+    .menubar{
+
+    }
 </style>
 <body>
 <div class="notrunning">
     <div class="content">
-<!--        <img src="fav.png" width="300px">-->
+        <img src="fav.png" width="300px">
         <center><button class="ctabtn" onclick="opstarten()">Start de applicatie</button></center>
     </div>
 </div>
-<div class="wrapper">
+<div class="wrapper hidden">
     <div class="label">Dumpert comments:</div>
     <div id="toggle" class="radio off">
         <div class="icon"></div>
@@ -262,11 +299,14 @@
 <div class="lijst">
 </div>
 <div class="framelist">
-    <div class="terug">
-        <i title="Terug naar het menu" class="material-icons" style="font-size:36px">keyboard_arrow_down</i>
-        <img class="info" src="fav.png" width="36px">
+        <div id="terug" class="terug">
+            <div class="menubar">
+            <i title="Terug naar het menu" class="material-icons" style="font-size:36px">keyboard_arrow_down</i>
+            <img class="info" src="fav.png" width="36px">
+        </div>
     </div>
-    <iframe id="vidplayer" src="" width="100%" height="500px" class="dumpertembed" allowfullscreen></iframe>
+    <iframe id="vidplayer" src="" width="100%" height="500px" class="fullplayer" allowfullscreen></iframe>
+    <iframe src="" width="100%" height="500px" class="commentpage" style="display: none;"></iframe>
 </div>
 <script>
     var link = window.location.search;
@@ -277,9 +317,16 @@
         window.open('index.php?running','Dumpert Notifications','width=400,height=500,resizable=1');
     }else if(link === "?running"){
         $('.notrunning').remove();
+        $('.wrapper').show();
     }else{
         $('.lijst').remove();
     }
+    function updatecomment(site) {
+        $.post("dumpertcomments.php", {'site': site}).done(function (data) {
+            $('.commentpage').attr('src', data);
+        })
+    }
+
     function updatelist() {
         $.post("dumpertmelding.php", {}).done(function (data) {
             $(".lijst").html(data);
@@ -287,8 +334,11 @@
                 var id = this.id;
                 nowactive = id;
                 var val = $('#link' + id).text();
+                var site = $('#info' + id).text();
+                updatecomment(site);
                 $('#vidplayer').attr('src', val);
                 $('.lijst').hide();
+                $('.wrapper ').hide();
                 $('.framelist').show();
                 window.resizeTo(800,500);
             });
@@ -317,12 +367,6 @@
         window.open('index.php?running','Dumpert Notifications','width=400,height=500,resizable=1');
     }
 
-    function updatecomment(site) {
-        $.post("dumpertcomments.php", {'site': site}).done(function (data) {
-            console.log(data)
-        })
-    }
-
     function popmelding() {
         Push.create("Dumpert Notificatie",{
             body: "Er zijn weer nieuwe videos geupload!",
@@ -335,19 +379,21 @@
         });
     }
 
-    $('#vidplayer , .terug').hover(function () {
-        $('.terug').stop().fadeIn();
+    $('#vidplayer , #terug').hover(function () {
+        $('#terug').stop().fadeIn();
     });
 
-    $("#vidplayer, .terug").mouseleave(function() {
-        $('.terug').stop().fadeOut();
+    $("#vidplayer, #terug").mouseleave(function() {
+        $('#terug').stop().fadeOut();
     });
 
-    $(".terug > i").click(function () {
+    $("#terug > .menubar > i").click(function () {
         window.resizeTo(400,480);
         $('.lijst').show();
+        $('.wrapper ').show();
         $('.framelist').hide();
         $('#vidplayer').attr('src', '');
+        $('.commentpage').attr('src', '');
         count = 0;
     });
 
@@ -361,15 +407,40 @@
         }
     });
 
+
+    $('#toggle').on('click', function () {
+        var val = '';
+        if($('#toggle').hasClass("on") === true) {
+            val = "on";
+            $('.commentpage').show();
+            $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
+            $('#terug').addClass('terugsplit').removeClass('terugfull');
+        } else {
+            val = "off";
+            $('.commentpage').hide();
+            $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
+            $('#terug').addClass('terugfull').removeClass('terugsplit');
+        }
+        $.post("ajax.php", {'status': 'commentToggle', 'val': val});
+    });
+
     $(document).ready(function () {
-        $.post("ajax.php", {'status': 'checkToggleState'}).done(function (data) {
-            if(data == "on") {
-                $("#toggle").attr("class", "radio on");
-            } else {
-                $("#toggle").attr("class", "radio off");
-            }
-        });
-    })
+        setTimeout(function () {
+            $.post("ajax.php", {'status': 'checkToggleState'}).done(function (data) {
+                if(data == "on") {
+                    $("#toggle").attr("class", "radio on");
+                    $('.commentpage').show();
+                    $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
+                    $('#terug').addClass('terugsplit').removeClass('terugfull');
+                } else {
+                    $("#toggle").attr("class", "radio off");
+                    $('.commentpage').hide();
+                    $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
+                    $('#terug').addClass('terugfull').removeClass('terugsplit');
+                }
+            });
+        }, 250);
+    });
 
 </script>
 
