@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,13 +138,126 @@
     ::-webkit-scrollbar {
         display: none;
     }
+    .wrapper {
+        height: 22px;
+        width: 200px;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+    .label {
+        display:inline-block;
+        position:relative;
+        top:-6px;
+        height:20px;
+        padding:0;
+        margin:0 5px 0 0;
+        margin-right:5px;
+    }
+    .radio {
+        display:inline-block;
+        width:43px;
+        height:20px;
+        border-radius:10px;
+        position: relative;
+    }
+    .radio .icon {
+        display:inline-block;
+        position:absolute;
+        width:16px;
+        height:16px;
+        top:2px;
+        color:#ffffff;
+        text-shadow:0 1px 0 rgba(0,0,0,0.3);
+    }
+
+    .radio .switch {
+        display:block;
+        height:20px;
+        width:20px;
+        border-radius:10px;
+        border:1px solid #848b83;
+        position:relative;
+        top:-1px;
+        background: #f4f4f4; /* Old browsers */
+        background: -moz-linear-gradient(top,  #f4f4f4 0%, #ebebeb 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(100%,#ebebeb)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #f4f4f4 0%,#ebebeb 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #f4f4f4 0%,#ebebeb 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #f4f4f4 0%,#ebebeb 100%); /* IE10+ */
+        background: linear-gradient(top,  #f4f4f4 0%,#ebebeb 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr ='#f4f4f4', endColorstr='#ebebeb',GradientType=0 ); /* IE6-9 */
+        -webkit-transition: left 150ms ease;
+        -moz-transition: left 150ms ease;
+        -ms-transition: left 150ms ease;
+        -o-transition: left 150ms ease;
+        transition: left 150ms ease;
+    }
+    .radio:hover {
+        cursor:pointer;
+    }
+    .radio .switch:after {
+        content:"";
+        display:block;
+        position: relative;
+        width:10px;
+        height:10px;
+        border-radius:5px;
+        top:5px;
+        left:5px;
+        background: #8e8e8e; /* Old browsers */
+        background: -moz-linear-gradient(top,  #8e8e8e 0%, #bcbcbc 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8e8e8e), color-stop(100%,#bcbcbc)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #8e8e8e 0%,#bcbcbc 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #8e8e8e 0%,#bcbcbc 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #8e8e8e 0%,#bcbcbc 100%); /* IE10+ */
+        background: linear-gradient(top,  #8e8e8e 0%,#bcbcbc 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e8e8e', endColorstr='#bcbcbc',GradientType=0 ); /* IE6-9 */
+        -webkit-box-shadow:0 1px 0 #ffffff;
+        box-shadow:0 1px 0 #ffffff;
+    }
+    .radio.on {
+        border:1px solid #469d1c;
+        background: #168d09; /* Old browsers */
+        background: -moz-linear-gradient(top, #168d09 0%, #5bcf24 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#168d09), color-stop(100%,#5bcf24)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #168d09 0%,#5bcf24 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #168d09 0%,#5bcf24 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #168d09 0%,#5bcf24 100%); /* IE10+ */
+        background: linear-gradient(top, #168d09 0%,#5bcf24 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#168d09', endColorstr='#5bcf24',GradientType=0 ); /* IE6-9 */
+    }
+    .radio.on .switch {
+        left:25px;
+    }
+    .radio.off {
+        border:1px solid #989898;
+        background: #8a8a8a; /* Old browsers */
+        background: -moz-linear-gradient(top,  #8a8a8a 0%, #7C7C7C 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8a8a8a), color-stop(100%,#7C7C7C)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #8a8a8a 0%,#7C7C7C 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #8a8a8a 0%,#7C7C7C 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #8a8a8a 0%,#7C7C7C 100%); /* IE10+ */
+        background: linear-gradient(top,  #8a8a8a 0%,#7C7C7C 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a8a8a', endColorstr='#7C7C7C',GradientType=0 ); /* IE6-9 */
+    }
+    .radio.off .switch {
+        left:-2px;
+    }
 </style>
 <body>
 <div class="notrunning">
     <div class="content">
-        <img src="fav.png" width="300px">
-        <center><button class="ctabtn" onclick="javascript:window.open('http://localhost/Dumpert-Notifications/?running','Dumpert Notifications','width=400,height=500,resizable=1');">Start de applicatie</button></center>
+<!--        <img src="fav.png" width="300px">-->
+        <center><button class="ctabtn" onclick="opstarten()">Start de applicatie</button></center>
     </div>
+</div>
+<div class="wrapper">
+    <div class="label">Dumpert comments:</div>
+    <div id="toggle" class="radio off">
+        <div class="icon"></div>
+        <div class="switch"></div>
+    </div>
+    <p class="comtog"></p>
 </div>
 <div class="lijst">
 </div>
@@ -160,7 +274,7 @@
     var count = 0;
 
     if(link === "?run"){
-        window.open('http://localhost/Dumpert-Notifications/','Dumpert Notifications','width=400,height=500,resizable=1');
+        window.open('index.php?running','Dumpert Notifications','width=400,height=500,resizable=1');
     }else if(link === "?running"){
         $('.notrunning').remove();
     }else{
@@ -192,9 +306,20 @@
         updatelist();
     }, 10000);
 
-    function updatecomment(site) {
-        $.post("dumpertcomments.php", {'site': site}).done(function () {
+    function opstarten(){
+        var status = "off";
+        if($( "#toggle" ).hasClass( "on" ) == true){
+            status = "on";
+        }else{
+            status = "off";
+        }
+        $.post("ajax.php", {'status': 'commentToggle', 'val': status});
+        window.open('index.php?running','Dumpert Notifications','width=400,height=500,resizable=1');
+    }
 
+    function updatecomment(site) {
+        $.post("dumpertcomments.php", {'site': site}).done(function (data) {
+            console.log(data)
         })
     }
 
@@ -225,6 +350,26 @@
         $('#vidplayer').attr('src', '');
         count = 0;
     });
+
+    $(".radio").click(function () {
+        if($("#toggle").hasClass("on") === true) {
+            //$(".icon").html("✗");
+            $("#toggle").attr("class", "radio off");
+        } else {
+            //$(".icon").html("✓");
+            $("#toggle").attr("class", "radio on");
+        }
+    });
+
+    $(document).ready(function () {
+        $.post("ajax.php", {'status': 'checkToggleState'}).done(function (data) {
+            if(data == "on") {
+                $("#toggle").attr("class", "radio on");
+            } else {
+                $("#toggle").attr("class", "radio off");
+            }
+        });
+    })
 
 </script>
 

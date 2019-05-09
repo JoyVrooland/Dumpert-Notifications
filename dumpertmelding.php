@@ -59,6 +59,7 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
     }
 
 
+
 $jsonarray = json_encode($headlines);
 
     if(sizeof($headlines) > 0){
@@ -72,10 +73,17 @@ $jsonarray = json_encode($headlines);
                         setTimeout(function() {
                           $('.audiofile').remove();
                         }, 1000);</script>";
+                for($a = 0; $a < sizeof($images); $a++){
+//                echo $images[$a];
+                    $content = file_get_contents($images[$a]);
+                    $path = 'thumbs/'.$a.'.jpg';
+                    file_put_contents($path, $content);
+//                copy($images[$a], 'thumbs/'.$a.'.jpg');
+                }
             }
             for($x = 0; $x < sizeof($links); $x++){
                 echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn">
-                         <img src="'.$images[$x].'" alt="Sporten blijft slecht voor je" title="Sporten blijft slecht voor je" width="100" height="100">
+                         <img src="thumbs/'.$x.'.jpg" alt="Sporten blijft slecht voor je" title="Sporten blijft slecht voor je" width="100" height="100">
                          <div class="details">
                              <h1>'.$headlines[$x].'</h1>
                              <p class="stats">'.$stats[$x].'</p>
@@ -86,10 +94,6 @@ $jsonarray = json_encode($headlines);
                 echo '<p class="hidden" id="link'.$x.'">'.$embed[$x].'</p>';
                 echo '<p class="hidden" id="info'.$x.'">'.$links[$x].'</p>';
             }
-//            for($a=0;$a<sizeof($array);$a++){
-//                $count++;
-//                array_push($dumbthumb, array('img' => $images[$a], 'title' => $headlines[$a], 'stats' => $stats[$a]));
-//            }
 
         }
     }else{
