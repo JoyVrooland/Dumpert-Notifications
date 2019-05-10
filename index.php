@@ -175,7 +175,8 @@
         height: 22px;
         width: 200px;
         margin: 0 auto;
-        margin-top: 15px;
+        margin-top: 10px;
+        margin-bottom: 6px;
     }
     .label {
         display:inline-block;
@@ -277,15 +278,21 @@
         left:-2px;
     }
 
-    .menubar{
-
+    .version{
+        position: relative;
+        display: block;
+        margin-top: 14px;
+        font-family: sans-serif;
     }
 </style>
 <body>
 <div class="notrunning">
     <div class="content">
         <img src="fav.png" width="300px">
-        <center><button class="ctabtn" onclick="opstarten()">Start de applicatie</button></center>
+        <center>
+            <button class="ctabtn" onclick="opstarten()">Start de applicatie</button>
+            <span class="version">© Dumpert Notifications - v1.0.1</span>
+        </center>
     </div>
 </div>
 <div class="wrapper hidden">
@@ -312,6 +319,7 @@
     var link = window.location.search;
     var nowactive = '';
     var count = 0;
+    var comments = "off";
 
     if(link === "?run"){
         window.open('index.php?running','Dumpert Notifications','width=400,height=500,resizable=1');
@@ -340,7 +348,11 @@
                 $('.lijst').hide();
                 $('.wrapper ').hide();
                 $('.framelist').show();
-                window.resizeTo(800,500);
+                if(comments == "on"){
+                    window.resizeTo(800,935);
+                }else{
+                    window.resizeTo(800,500);
+                }
             });
             $(".info").click(function () {
                 if(count < 1){
@@ -409,30 +421,31 @@
 
 
     $('#toggle').on('click', function () {
-        var val = '';
         if($('#toggle').hasClass("on") === true) {
-            val = "on";
+            comments = "on";
             $('.commentpage').show();
             $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
             $('#terug').addClass('terugsplit').removeClass('terugfull');
         } else {
-            val = "off";
+            comments = "off";
             $('.commentpage').hide();
             $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
             $('#terug').addClass('terugfull').removeClass('terugsplit');
         }
-        $.post("ajax.php", {'status': 'commentToggle', 'val': val});
+        $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
     });
 
     $(document).ready(function () {
         setTimeout(function () {
             $.post("ajax.php", {'status': 'checkToggleState'}).done(function (data) {
                 if(data == "on") {
+                    comments = "on";
                     $("#toggle").attr("class", "radio on");
                     $('.commentpage').show();
                     $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
                     $('#terug').addClass('terugsplit').removeClass('terugfull');
                 } else {
+                    comments = "off";
                     $("#toggle").attr("class", "radio off");
                     $('.commentpage').hide();
                     $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
