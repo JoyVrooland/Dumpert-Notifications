@@ -138,8 +138,11 @@
     a.dumpthumb .details date, a.dumpthumb .details .stats {
         font-size: 1em;
         color: #8f8f8f;
+        z-index: 10000
     }
-
+    a.dumpthumb span.video {
+        background-position: -184px -38px;
+    }
     a.dumpthumb p {
         margin: 0;
     }
@@ -152,6 +155,26 @@
         font-size: 1em;
         color: #8f8f8f;
     }
+    a.dumpthumb span.foto, a.dumpthumb span.video {
+        position: absolute;
+        display: block;
+        left: 85px;
+        top: 89px;
+        width: 20px;
+        height: 20px;
+        width: 18px;
+        height: 15px;
+        background-position: -129px -38px;
+        opacity: 0.5;
+    }
+    a.dumpthumb span.video {
+        background-position: -184px -38px;
+    }
+    .allsprites-sprite, a.dumpthumb span.foto, a.dumpthumb span.video, .header .dump-lgo, .header .dump-srv .nsfw, .header .dump-srv .nsfw.on, .pagination li a span, .pagination li.volgende a span, .dump-mail, .dump-embed, .dump-enhance, .dump-mut a, .dump-mut .dump-bad, .dump-wgt > a > .dump-amt:before, .dump-wgt .dump-tweet > span:first-child:before, .dump-wgt .dump-like > span:first-child:before, .dump-wgt .dump-share > span:first-child:before, #comments article footer .baby, #comments article footer a.modmark, #comments article footer a.modmark:hover, #comments article footer a.modmark.m, #comments article footer a.modmark.m:hover, #comments article footer .nsb, #comments article footer .nsb:hover, .mob-headlines li.gs .logo, .mob-headlines li.dk .logo, .mob-headlines li.uc .logo, .mob-headlines li.ab .logo, .dump-mnu, .mobnav .dump-vid span, .mobnav .dump-img span, .mobnav .dump-top span, .mobnav .dump-themas span, .mobnav .dump-view span, .mobnav .dump-dump span, .dump-soc .dump-app .dump-fb, .dump-soc .dump-app .dump-tw, .dump-soc .dump-app .dump-send, .dump-soc .dump-app .dump-wa {
+        background-image: url(allsprites-s6c30d074dd.png);
+        background-repeat: no-repeat;
+    }
+
     .content{
         margin:0 auto;
         width: 300px;
@@ -317,6 +340,7 @@
         </div>
     </div>
     <iframe id="vidplayer" src="" width="100%" height="500px" class="fullplayer" allowfullscreen></iframe>
+    <img src="" class="hidden dumpertembed">
     <iframe src="" width="100%" height="500px" class="commentpage" style="display: none;"></iframe>
 </div>
 <script>
@@ -332,6 +356,12 @@
         $('.wrapper').show();
     }else{
         $('.lijst').remove();
+    }
+    function updatefoto(site) {
+        $.post("dumpertfotos.php", {'site': site}).done(function (data) {
+            console.log(data);
+            // $('#picplayer').attr('src', data);
+        })
     }
     function updatecomment(site) {
         $.post("dumpertcomments.php", {'site': site}).done(function (data) {
@@ -370,7 +400,7 @@
     updatelist();
     setInterval(function () {
         updatelist();
-    }, 10000);
+    }, 1000000);
 
     function opstarten(){
         var status = "off";

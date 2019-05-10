@@ -23,6 +23,7 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
     $desc = array();
     $count = 0;
     $dumbthumb = array();
+    $dumbtype = array();
 
 
     $ch=curl_init();
@@ -42,7 +43,6 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
         $unfiltered = $link->href;
         $embed[] = str_replace('mediabase', 'embed', $unfiltered);
         $links[] = $link->href;
-        echo $link->src;
     }
 
     foreach($html->find('div.details > h1') as $header) {
@@ -65,7 +65,9 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
         $desc[] = $description->plaintext;
     }
 
-
+    foreach($html->find('a[class=dumpthumb] > span') as $typeof){
+        $dumbtype[] = $typeof->attr['class'];
+    }
 
 $jsonarray = json_encode($headlines);
 
@@ -88,11 +90,6 @@ $jsonarray = json_encode($headlines);
                           $('.audiofile').remove();
                         }, 1000);</script>";
                 for($a = 0; $a <= sizeof($images); $a++){
-//                echo $images[$a];
-//                    $files = glob('thumbs/*.jpg');
-//                    foreach($files as $file) {
-//                        unlink($file);
-//                    }
                     $content = file_get_contents($images[$a]);
                     $path = 'thumbs/'.$imgname[$a];
                     file_put_contents($path, $content);
@@ -101,8 +98,10 @@ $jsonarray = json_encode($headlines);
             }
 
             for($x = 0; $x < sizeof($links); $x++){
-                echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn" title="'.$headlines[$x].'">
+                if($dumbtype[$x] == 'video'){
+                    echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn" title="'.$headlines[$x].'">
                          <img src="thumbs/'.$imgname[$x].'" alt="Sporten blijft slecht voor je" width="100" height="100">
+                         <span class="video"></span>
                          <div class="details">
                              <h1>'.$headlines[$x].'</h1>
                              <date>'.$date[$x].'</date>
@@ -111,8 +110,23 @@ $jsonarray = json_encode($headlines);
                          </div>
                      </a>';
 //                echo '<a id="'.$x.'" class="linkbtn" href="#">' .$headlines[$x] . "</a><br>";
-                echo '<p class="hidden" id="link'.$x.'">'.$embed[$x].'</p>';
-                echo '<p class="hidden" id="info'.$x.'">'.$links[$x].'</p>';
+                    echo '<p class="hidden" id="link'.$x.'">'.$embed[$x].'</p>';
+                    echo '<p class="hidden" id="info'.$x.'">'.$links[$x].'</p>';
+                }else{
+                    echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn" title="'.$headlines[$x].'">
+                         <img src="thumbs/'.$imgname[$x].'" alt="Sporten blijft slecht voor je" width="100" height="100">
+                         <span class="foto"></span>
+                         <div class="details">
+                             <h1>'.$headlines[$x].'</h1>
+                             <date>'.$date[$x].'</date>
+                             <p class="stats">'.$stats[$x].'</p>
+                             <p class="description">'.$desc[$x].'</p>
+                         </div>
+                     </a>';
+//                echo '<a id="'.$x.'" class="linkbtn" href="#">' .$headlines[$x] . "</a><br>";
+                    echo '<p class="hidden" id="link'.$x.'">'.$embed[$x].'</p>';
+                    echo '<p class="hidden" id="info'.$x.'">'.$links[$x].'</p>';
+                }
             }
 
         }
