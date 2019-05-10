@@ -17,14 +17,16 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
     $links = array();
     $embed = array();
     $images = array();
+    $imgname = array();
     $stats = array();
+    $date = array();
     $desc = array();
     $count = 0;
     $dumbthumb = array();
 
 
     $ch=curl_init();
-    curl_setopt($ch, CURLOPT_URL,'https://www.dumpert.nl/filmpjes/');
+    curl_setopt($ch, CURLOPT_URL,'https://www.dumpert.nl/');
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
@@ -40,10 +42,15 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
         $unfiltered = $link->href;
         $embed[] = str_replace('mediabase', 'embed', $unfiltered);
         $links[] = $link->href;
+        echo $link->src;
     }
 
     foreach($html->find('div.details > h1') as $header) {
         $headlines[] = $header->plaintext;
+    }
+
+    foreach($html->find('div.details > date') as $datum) {
+        $date[] = $datum->plaintext;
     }
 
     foreach($html->find('a[class=dumpthumb] img') as $image) {
@@ -67,25 +74,38 @@ $jsonarray = json_encode($headlines);
         $result = file_put_contents('dumpertlijst.json', $jsonarray);
         if($result){
             $diff = array_diff($array,$headlines);
+            for($y = 0; $y < sizeof($images); $y++){
+                $picturename = $images[$y];
+                $picturename = parse_url($picturename);
+                $picturename = $picturename['path'];
+                $picturename = explode('/', $picturename);
+                $imgname[] = $picturename[2];
+            }
             if(sizeof($diff) > 0){
                 echo '<audio class="audiofile" controls autoplay hidden="" src="alert.mp3" type="audio/mp3">your browser does not support Html5</audio>';
                 echo "<script>popmelding();
                         setTimeout(function() {
                           $('.audiofile').remove();
                         }, 1000);</script>";
-                for($a = 0; $a < sizeof($images); $a++){
+                for($a = 0; $a <= sizeof($images); $a++){
 //                echo $images[$a];
+//                    $files = glob('thumbs/*.jpg');
+//                    foreach($files as $file) {
+//                        unlink($file);
+//                    }
                     $content = file_get_contents($images[$a]);
-                    $path = 'thumbs/'.$a.'.jpg';
+                    $path = 'thumbs/'.$imgname[$a];
                     file_put_contents($path, $content);
 //                copy($images[$a], 'thumbs/'.$a.'.jpg');
                 }
             }
+
             for($x = 0; $x < sizeof($links); $x++){
-                echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn">
-                         <img src="thumbs/'.$x.'.jpg" alt="Sporten blijft slecht voor je" title="Sporten blijft slecht voor je" width="100" height="100">
+                echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn" title="'.$headlines[$x].'">
+                         <img src="thumbs/'.$imgname[$x].'" alt="Sporten blijft slecht voor je" width="100" height="100">
                          <div class="details">
                              <h1>'.$headlines[$x].'</h1>
+                             <date>'.$date[$x].'</date>
                              <p class="stats">'.$stats[$x].'</p>
                              <p class="description">'.$desc[$x].'</p>
                          </div>

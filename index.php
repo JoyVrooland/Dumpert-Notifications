@@ -69,7 +69,7 @@
         width: 91px;
         height: 30px;
         position: absolute;
-        bottom: 50%;
+        bottom: 51%;
         left: 50%;
         margin-left: -33px;
         color: white;
@@ -147,6 +147,10 @@
         margin-top: 3px;
         font-size: 1.2em;
         color: #000;
+    }
+    a.dumpthumb .details date, a.dumpthumb .details .stats {
+        font-size: 1em;
+        color: #8f8f8f;
     }
     .content{
         margin:0 auto;
