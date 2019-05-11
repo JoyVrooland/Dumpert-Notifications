@@ -12,9 +12,21 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="push.js"></script>
 </head>
+<!-- Cookie Consent by https://PrivacyPolicies.com -->
+<script type="text/javascript" src="//www.PrivacyPolicies.com/cookie-consent/releases/3.0.0/cookie-consent.js"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        cookieconsent.run({"notice_banner_type":"headline","consent_type":"implied","palette":"light","change_preferences_selector":"#changePreferences","language":"en","website_name":"Dumpert Notifications"});
+    });
+</script>
+
+<noscript><a href="https://www.privacypolicies.com/cookie-consent/">Cookie Consent by Privacy Policies Generator</a></noscript>
+<!-- End Cookie Consent -->
+
 <style>
     .fullplayer {
         position: fixed;
@@ -46,6 +58,34 @@
         height: 50%;
         z-index: -1;
     }
+    .dumpertpicplayer{
+        display: table-cell;
+        vertical-align:middle;
+        background: #000;
+        border: none;
+        top: 0; right: 0;
+        bottom: 0; left: 0;
+        height: 50%;
+        z-index: -1;
+        position: fixed;
+    }
+    .dumpertpicplayerfull{
+        display: table-cell;
+        vertical-align:middle;
+        background: #000;
+        border: none;
+        top: 0; right: 0;
+        bottom: 0; left: 0;
+        height: 100%;
+        z-index: -1;
+        position: fixed;
+    }
+    #picplayer{
+        margin: 0px auto;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+    }
     .hidden{
         display: none;
     }
@@ -59,7 +99,7 @@
         width: 91px;
         height: 30px;
         position: absolute;
-        bottom: 12px;
+        bottom: 9px;
         left: 50%;
         margin-left: -33px;
         color: white;
@@ -75,7 +115,7 @@
         color: white;
         display: none;
     }
-    .terug > i {
+    .terug {
         cursor: pointer;
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
@@ -86,13 +126,33 @@
                                   supported by Chrome and Opera */
     }
     .info{
-        position: absolute;
-        bottom: 2px;
+        position: relative;
+        bottom: 5px;
         margin-left: 10px;
         z-index: 10000;
         width: 20px;
         cursor: pointer;
     }
+    .fa-comments{
+        position: relative;
+        bottom: 2px;
+        margin-left: 10px;
+        z-index: 10000;
+        width: 20px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .fas fa-angle-down{
+        position: relative;
+        bottom: 2px;
+        margin-left: 10px;
+        z-index: 10000;
+        width: 20px;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
     a.dumpthumb .details {
         position: absolute;
         left: 118px;
@@ -311,6 +371,17 @@
         margin-top: 14px;
         font-family: sans-serif;
     }
+
+    .commenton{
+        color: #5bcf24;
+    }
+    .commentoff{
+        color: white;
+    }
+    .cc_css_reboot {
+        position: fixed !important;
+    }
+
 </style>
 <body>
 <div class="notrunning">
@@ -318,7 +389,7 @@
         <img src="fav.png" width="300px">
         <center>
             <button class="ctabtn" onclick="opstarten()">Start de applicatie</button>
-            <span class="version">© Dumpert Notifications - v1.0.1</span>
+            <span class="version">© Dumpert Notifications - v1.0.2</span>
         </center>
     </div>
 </div>
@@ -335,12 +406,15 @@
 <div class="framelist">
         <div id="terug" class="terug">
             <div class="menubar">
-            <i title="Terug naar het menu" class="material-icons" style="font-size:36px">keyboard_arrow_down</i>
+            <i title="Terug naar het menu" class="fas fa-angle-down" style="font-size:26px"></i>
             <img class="info" src="fav.png" width="36px">
+            <i id="comtoggle" title="" class='fas fa-comments'></i>
         </div>
     </div>
     <iframe id="vidplayer" src="" width="100%" height="500px" class="fullplayer" allowfullscreen></iframe>
-    <img src="" class="hidden dumpertembed">
+    <div id="picframe" class="dumpertpicplayer hidden">
+        <a id="piclink" href="" target="_blank" title="volledige grote"><img id="picplayer" src="" class="hidden"></a>
+    </div>
     <iframe src="" width="100%" height="500px" class="commentpage" style="display: none;"></iframe>
 </div>
 <script>
@@ -348,6 +422,7 @@
     var nowactive = '';
     var count = 0;
     var comments = "off";
+    var thumbtype = '';
 
     if(link === "?run"){
         window.open('index.php?running','Dumpert Notifications','width=400,height=500,resizable=1');
@@ -359,8 +434,8 @@
     }
     function updatefoto(site) {
         $.post("dumpertfotos.php", {'site': site}).done(function (data) {
-            console.log(data);
-            // $('#picplayer').attr('src', data);
+            $('#picplayer').attr('src', data);
+            $('#piclink').attr('href', data);
         })
     }
     function updatecomment(site) {
@@ -372,16 +447,48 @@
     function updatelist() {
         $.post("dumpertmelding.php", {}).done(function (data) {
             $(".lijst").html(data);
+            $('#comtoggle').on('click', function () {
+                if($('#comtoggle').hasClass("commenton") === true) {
+                    comments = "off";
+                    $('.commentpage').hide();
+                    $('#toggle').addClass('off').removeClass('on');
+                    $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
+                    $('#terug').addClass('terugfull').removeClass('terugsplit');
+                    $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
+                    $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer');
+                    window.resizeTo(800,500);
+                }else {
+                    comments = "on";
+                    $('.commentpage').show();
+                    $('#toggle').addClass('on').removeClass('off');
+                    $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
+                    $('#terug').addClass('terugsplit').removeClass('terugfull');
+                    $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
+                    $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
+                    window.resizeTo(800,935);
+
+                }
+                $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
+            });
             $('.linkbtn').click(function () {
                 var id = this.id;
-                nowactive = id;
                 var val = $('#link' + id).text();
                 var site = $('#info' + id).text();
-                updatecomment(site);
-                $('#vidplayer').attr('src', val);
-                $('.lijst').hide();
-                $('.wrapper ').hide();
+                nowactive = id;
+
+                if($('#thumb' + nowactive).hasClass('foto') === true){
+                    updatefoto(site);
+                    $('#vidplayer').hide();
+                    $('#picframe').show();
+                }else{
+                    $('#picframe').hide();
+                    $('#vidplayer').show();
+                    $('#vidplayer').attr('src', val);
+                }
                 $('.framelist').show();
+                $('.wrapper ').hide();
+                $('.lijst').hide();
+                updatecomment(site);
                 if(comments == "on"){
                     window.resizeTo(800,935);
                 }else{
@@ -425,21 +532,23 @@
         });
     }
 
-    $('#vidplayer , #terug').hover(function () {
+    $('#vidplayer , #terug, .dumpertpicplayer').hover(function () {
         $('#terug').stop().fadeIn();
     });
 
-    $("#vidplayer, #terug").mouseleave(function() {
+    $("#vidplayer, #terug, .dumpertpicplayer").mouseleave(function() {
         $('#terug').stop().fadeOut();
     });
 
-    $("#terug > .menubar > i").click(function () {
-        window.resizeTo(400,480);
+    $(".fa-angle-down").click(function () {
+        // window.resizeTo(400,480);
         $('.lijst').show();
         $('.wrapper ').show();
         $('.framelist').hide();
         $('#vidplayer').attr('src', '');
         $('.commentpage').attr('src', '');
+        $('#picplayer').attr('src', '');
+        $('#piclink').attr('href', '');
         count = 0;
     });
 
@@ -460,16 +569,33 @@
             $('.commentpage').show();
             $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
             $('#terug').addClass('terugsplit').removeClass('terugfull');
+            $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
+            $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
         } else {
             comments = "off";
             $('.commentpage').hide();
             $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
             $('#terug').addClass('terugfull').removeClass('terugsplit');
+            $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
+            $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer');
         }
         $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
     });
 
     $(document).ready(function () {
+
+        var cookies = $(".cc_dialog");
+
+        if ( cookies.length){
+            $('.ctabtn').attr("disabled", true);
+            $('button[class=ctabtn]').css( 'cursor', 'not-allowed' );
+            
+            $('.cc_b_ok').on('click', function () {
+                $('.ctabtn').attr("disabled", false);
+                $('button[class=ctabtn]').css( 'cursor', 'pointer' );
+            })
+        }
+
         setTimeout(function () {
             $.post("ajax.php", {'status': 'checkToggleState'}).done(function (data) {
                 if(data == "on") {
@@ -478,19 +604,21 @@
                     $('.commentpage').show();
                     $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
                     $('#terug').addClass('terugsplit').removeClass('terugfull');
+                    $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
+                    $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
                 } else {
                     comments = "off";
                     $("#toggle").attr("class", "radio off");
                     $('.commentpage').hide();
                     $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
                     $('#terug').addClass('terugfull').removeClass('terugsplit');
+                    $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer').attr('title', 'Schakel de comments in');
+                    $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
                 }
             });
         }, 250);
     });
 
 </script>
-
-
 </body>
 </html>

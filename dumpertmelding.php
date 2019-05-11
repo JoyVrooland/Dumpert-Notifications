@@ -89,7 +89,7 @@ $jsonarray = json_encode($headlines);
                         setTimeout(function() {
                           $('.audiofile').remove();
                         }, 1000);</script>";
-                for($a = 0; $a <= sizeof($images); $a++){
+                for($a = 0; $a < sizeof($images); $a++){
                     $content = file_get_contents($images[$a]);
                     $path = 'thumbs/'.$imgname[$a];
                     file_put_contents($path, $content);
@@ -115,7 +115,7 @@ $jsonarray = json_encode($headlines);
                 }else{
                     echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn" title="'.$headlines[$x].'">
                          <img src="thumbs/'.$imgname[$x].'" alt="Sporten blijft slecht voor je" width="100" height="100">
-                         <span class="foto"></span>
+                         <span id="thumb'.$x.'" class="foto"></span>
                          <div class="details">
                              <h1>'.$headlines[$x].'</h1>
                              <date>'.$date[$x].'</date>
