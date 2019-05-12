@@ -434,7 +434,7 @@
         <img src="fav.png" width="300px">
         <center>
             <button class="ctabtn" onclick="opstarten()">Start de applicatie</button>
-            <span class="version">© Dumpert Notifications - v1.0.2</span>
+            <span class="version">© Dumpert Notifications - v1.0.3</span>
         </center>
     </div>
 </div>
@@ -617,7 +617,6 @@
             $("body").attr("class", "nightmode");
         }
         $.post("ajax.php", {'status': 'nightmodeToggle', 'val': nightmode}).done(function (data) {
-            console.log(data);
         });
     });
 
@@ -644,9 +643,10 @@
 
         }
         $.post("ajax.php", {'status': 'commentToggle', 'val': comments}).done(function () {
-            console.log(data);
         });
         console.log(comments);
+        $.post("ajax.php", {'status': 'commentToggle', 'val': comments}).done(function () {
+        });
     });
 
 
@@ -702,6 +702,5 @@
         });
     });
 </script>
-<?php print_r($_SESSION)?>
 </body>
 </html>
