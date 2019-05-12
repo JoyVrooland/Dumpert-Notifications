@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10c46082-f12c-40a9-91f1-e46980484490" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dumpertlijst.json" beforeDir="false" afterPath="$PROJECT_DIR$/dumpertlijst.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dumpertlijst2.json" beforeDir="false" afterPath="$PROJECT_DIR$/dumpertlijst2.json" afterDir="false" />
+=======
+<<<<<<< Updated upstream
+      <change beforePath="$PROJECT_DIR$/dumpertlijst.json" beforeDir="false" afterPath="$PROJECT_DIR$/dumpertlijst.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dumpertlijst2.json" beforeDir="false" afterPath="$PROJECT_DIR$/dumpertlijst2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dumpertmelding.php" beforeDir="false" afterPath="$PROJECT_DIR$/dumpertmelding.php" afterDir="false" />
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +31,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="435">
               <caret line="636" column="37" lean-forward="true" selection-start-line="636" selection-start-column="37" selection-end-line="636" selection-end-column="37" />
+=======
+<<<<<<< Updated upstream
+            <state relative-caret-position="332">
+              <caret line="393" column="10" lean-forward="true" selection-start-line="393" selection-start-column="10" selection-end-line="393" selection-end-column="10" />
+              <folding>
+                <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+=======
+            <state relative-caret-position="744">
+              <caret line="700" column="9" selection-start-line="700" selection-start-column="9" selection-end-line="700" selection-end-column="9" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -33,6 +54,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="2" column="40" lean-forward="true" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -58,8 +83,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dumpertmelding.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="17">
+=======
+<<<<<<< Updated upstream
+            <state>
+>>>>>>> Stashed changes
               <caret line="30" selection-start-line="30" selection-end-line="30" />
+=======
+            <state relative-caret-position="34">
+              <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -95,7 +129,25 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+      <find>notifi</find>
+      <find>jquery</find>
+      <find>admin</find>
+      <find>AdminModal</find>
+      <find>adminmodal</find>
+      <find>login</find>
+      <find>Terug</find>
+      <find>group</find>
+      <find>form-group</find>
+      <find>overflow</find>
+      <find>form</find>
+      <find>btn</find>
+>>>>>>> Stashed changes
       <find>localhost</find>
+=======
+>>>>>>> Stashed changes
       <find>details</find>
       <find>.terug</find>
       <find>family</find>
@@ -110,6 +162,11 @@
       <find>dumpertpicplayer</find>
       <find>100</find>
       <find>.terugfull</find>
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
       <find>dumbthumb</find>
       <find>dumb</find>
       <find>dumpthumb</find>
@@ -125,6 +182,11 @@
       <find>.5</find>
       <find>version</find>
       <find>.radio</find>
+<<<<<<< Updated upstream
+=======
+      <find>console</find>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     </findStrings>
     <replaceStrings>
       <replace>dump</replace>
@@ -238,13 +300,30 @@
       <workItem from="1557306212780" duration="11550000" />
       <workItem from="1557420495174" duration="6818000" />
       <workItem from="1557478560452" duration="8653000" />
+<<<<<<< Updated upstream
       <workItem from="1557592339092" duration="10765000" />
       <workItem from="1557613155169" duration="6205000" />
+=======
+<<<<<<< Updated upstream
+      <workItem from="1557592339092" duration="8995000" />
+=======
+      <workItem from="1557592339092" duration="10765000" />
+      <workItem from="1557613155169" duration="6383000" />
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="54306000" />
+=======
+<<<<<<< Updated upstream
+    <option name="totallyTimeSpent" value="46331000" />
+=======
+    <option name="totallyTimeSpent" value="54484000" />
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
@@ -363,6 +442,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/dumpertmelding.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -370,7 +450,28 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/test.php">
+=======
+    <entry file="file://$PROJECT_DIR$/../Project2/webscrape.php">
+=======
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dumpertfotos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax.php">
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
@@ -391,10 +492,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dumpertmelding.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="435">
           <caret line="636" column="37" lean-forward="true" selection-start-line="636" selection-start-column="37" selection-end-line="636" selection-end-column="37" />
+=======
+<<<<<<< Updated upstream
+        <state relative-caret-position="332">
+          <caret line="393" column="10" lean-forward="true" selection-start-line="393" selection-start-column="10" selection-end-line="393" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+=======
+        <state relative-caret-position="744">
+          <caret line="700" column="9" selection-start-line="700" selection-start-column="9" selection-end-line="700" selection-end-column="9" />
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>

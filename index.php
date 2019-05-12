@@ -616,9 +616,17 @@
             $("#nightmode").attr("class", "radio on");
             $("body").attr("class", "nightmode");
         }
+<<<<<<< Updated upstream
         $.post("ajax.php", {'status': 'nightmodeToggle', 'val': nightmode}).done(function (data) {
             console.log(data);
         });
+=======
+<<<<<<< Updated upstream
+=======
+        $.post("ajax.php", {'status': 'nightmodeToggle', 'val': nightmode}).done(function (data) {
+        });
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     });
 
 
@@ -643,10 +651,19 @@
             window.resizeTo(800,935);
 
         }
+<<<<<<< Updated upstream
         $.post("ajax.php", {'status': 'commentToggle', 'val': comments}).done(function () {
             console.log(data);
         });
         console.log(comments);
+=======
+<<<<<<< Updated upstream
+        $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
+=======
+        $.post("ajax.php", {'status': 'commentToggle', 'val': comments}).done(function () {
+        });
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     });
 
 
