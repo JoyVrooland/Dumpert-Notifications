@@ -11,4 +11,16 @@ if($_POST["status"] == "commentToggle"){
 if($_POST["status"] == "checkToggleState"){
     echo $_SESSION['comments'];
 }
+
+if($_POST["status"] == "nightmodeToggle"){
+    $val = $_POST['val'];
+    if(strlen($val) > 0){
+        $_SESSION['nightmode'] = $_POST['val'];
+    }
+    echo $_SESSION['nightmode'];
+}
+
+if($_POST["status"] == "checkNightmodeState"){
+    echo $_SESSION['nightmode'];
+}
 ?>
