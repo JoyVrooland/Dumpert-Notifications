@@ -28,45 +28,6 @@
 <!-- End Cookie Consent -->
 
 <style>
-    :root{
-        --main-bg-color: #ffffff;
-        --dumpthumb: #272727;
-        --dumpthumb-font: #8f8f8f;
-        --dumpthumb-disc: #000000;
-        --dumpthumb-h1: #000000;
-        --dumpthumb-border: #e6e6e6;
-        --toggle-font-color: #000000;
-        --radio-border: #469d1c;
-        --radio-background: #168d09;
-        --radio-background2: #5bcf24;
-    }
-    .nightmode{
-        --main-bg-color: #191919;
-        --dumpthumb: #272727;
-        --dumpthumb-font: #8f8f8f;
-        --dumpthumb-disc: #656565;
-        --dumpthumb-h1: #ffffff;
-        --dumpthumb-border: #464646;
-        --toggle-font-color: #ffffff;
-        --radio-border: #318194;
-        --radio-background: #53b8d0;
-        --radio-background2: #3a889a;
-    }
-    .notrans{
-        -webkit-transition: all 0s linear;
-        -moz-transition: all 0s linear;
-        -o-transition: all 0s linear;
-        transition: all 0s linear;
-    }
-    body{
-        background-color: var(--main-bg-color);
-        margin-top: -10px;
-        padding-top: 10px;
-        -webkit-transition: all .2s linear;
-        -moz-transition: all .2s linear;
-        -o-transition: all .2s linear;
-        transition: all .2s linear;
-    }
     .fullplayer {
         position: fixed;
         background: #000;
@@ -79,7 +40,7 @@
     }
     .commentpage{
         position: fixed;
-        background: #fff;
+        /*background: #000;*/
         border: none;
         right: 0;
         bottom: 0; left: 0;
@@ -199,7 +160,7 @@
         width: 65%;
         word-wrap: break-word;
         font-size: 0.76923em;
-        color: var(--dumpthumb-font);
+        color: #8f8f8f;
         max-height: 100px;
         overflow: hidden;
     }
@@ -221,7 +182,7 @@
         height: 118px;
         overflow: hidden;
         margin: 0 4px 10px 4px;
-        border: 1px solid var(--dumpthumb-border);
+        border: 1px solid #e6e6e6;
         margin: -1px 3px 9px 3px;
         color: #000;
         text-decoration: none;
@@ -232,11 +193,11 @@
         line-height: 1.07692em;
         max-height: 2.15385em;
         overflow: hidden;
-        color: var(--dumpthumb-h1);
+        color: #000;
     }
     a.dumpthumb .details date, a.dumpthumb .details .stats {
         font-size: 1em;
-        color: var(--dumpthumb-font);
+        color: #8f8f8f;
         z-index: 10000
     }
     a.dumpthumb span.video {
@@ -248,7 +209,7 @@
     a.dumpthumb .details .description {
         margin-top: 3px;
         font-size: 1.2em;
-        color: var(--dumpthumb-disc);
+        color: #000;
     }
     a.dumpthumb .details date, a.dumpthumb .details .stats {
         font-size: 1em;
@@ -264,7 +225,7 @@
         width: 18px;
         height: 15px;
         background-position: -129px -38px;
-        opacity: 0.2;
+        opacity: 0.5;
     }
     a.dumpthumb span.video {
         background-position: -184px -38px;
@@ -299,13 +260,10 @@
     }
     .wrapper {
         height: 22px;
-        width: 370px;
+        width: 200px;
         margin: 0 auto;
         margin-top: 10px;
         margin-bottom: 6px;
-    }
-    .labelnight {
-        margin-left: 15px !important;
     }
     .label {
         display:inline-block;
@@ -315,8 +273,6 @@
         padding:0;
         margin:0 5px 0 0;
         margin-right:5px;
-        color: var(--toggle-font-color);
-        font-weight: bold;
     }
     .radio {
         display:inline-block;
@@ -361,7 +317,7 @@
         cursor:pointer;
     }
     .radio .switch:after {
-        /*content:"";*/
+        content:"";
         display:block;
         position: relative;
         width:10px;
@@ -381,11 +337,11 @@
         box-shadow:0 1px 0 #ffffff;
     }
     .radio.on {
-        border:1px solid var(--radio-border);
-        background: var(--radio-background); /* Old browsers */
+        border:1px solid #469d1c;
+        background: #168d09; /* Old browsers */
         background: -moz-linear-gradient(top, #168d09 0%, #5bcf24 100%); /* FF3.6+ */
         background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#168d09), color-stop(100%,#5bcf24)); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top, var(--radio-background) 0%,var(--radio-background2) 100%); /* Chrome10+,Safari5.1+ */
+        background: -webkit-linear-gradient(top, #168d09 0%,#5bcf24 100%); /* Chrome10+,Safari5.1+ */
         background: -o-linear-gradient(top, #168d09 0%,#5bcf24 100%); /* Opera 11.10+ */
         background: -ms-linear-gradient(top, #168d09 0%,#5bcf24 100%); /* IE10+ */
         background: linear-gradient(top, #168d09 0%,#5bcf24 100%); /* W3C */
@@ -414,7 +370,6 @@
         display: block;
         margin-top: 14px;
         font-family: sans-serif;
-        color: var(--dumpthumb-font);
     }
 
     .commenton{
@@ -438,20 +393,13 @@
         </center>
     </div>
 </div>
-<div id="nav">
-    <div class="wrapper hidden">
-        <div class="label">Dumpert comments:</div>
-        <div id="toggle" class="radio off">
-            <div class="icon"></div>
-            <div class="switch"></div>
-        </div>
-        <div class="label labelnight">Nightmode:</div>
-        <div id="nightmode" class="radio off">
-            <div class="icon"></div>
-            <div class="switch"></div>
-        </div>
-        <p class="comtog"></p>
+<div class="wrapper hidden">
+    <div class="label">Dumpert comments:</div>
+    <div id="toggle" class="radio off">
+        <div class="icon"></div>
+        <div class="switch"></div>
     </div>
+    <p class="comtog"></p>
 </div>
 <div class="lijst">
 </div>
@@ -474,7 +422,6 @@
     var nowactive = '';
     var count = 0;
     var comments = "off";
-    var nightmode = "off";
     var thumbtype = '';
 
     if(link === "?run"){
@@ -605,57 +552,41 @@
         count = 0;
     });
 
-
-    $("#nightmode").click(function () {
-        if($("#nightmode").hasClass("on") === true) {
-            nightmode = "off";
-            $("#nightmode").attr("class", "radio off");
-            $("body").attr("class", "");
+    $(".radio").click(function () {
+        if($("#toggle").hasClass("on") === true) {
+            //$(".icon").html("✗");
+            $("#toggle").attr("class", "radio off");
         } else {
-            nightmode = "on";
-            $("#nightmode").attr("class", "radio on");
-            $("body").attr("class", "nightmode");
+            //$(".icon").html("✓");
+            $("#toggle").attr("class", "radio on");
         }
-        $.post("ajax.php", {'status': 'nightmodeToggle', 'val': nightmode}).done(function (data) {
-            console.log(data);
-        });
     });
 
 
     $('#toggle').on('click', function () {
         if($('#toggle').hasClass("on") === true) {
-            comments = "off";
-            $('.commentpage').hide();
-            $('#toggle').addClass('off').removeClass('on');
-            $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
-            $('#terug').addClass('terugfull').removeClass('terugsplit');
-            $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
-            $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer');
-            window.resizeTo(800,500);
-        }else {
             comments = "on";
             $('.commentpage').show();
-            $('#toggle').addClass('on').removeClass('off');
             $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
             $('#terug').addClass('terugsplit').removeClass('terugfull');
             $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
             $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
-            window.resizeTo(800,935);
-
+        } else {
+            comments = "off";
+            $('.commentpage').hide();
+            $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
+            $('#terug').addClass('terugfull').removeClass('terugsplit');
+            $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
+            $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer');
         }
-        $.post("ajax.php", {'status': 'commentToggle', 'val': comments}).done(function () {
-            console.log(data);
-        });
-        console.log(comments);
+        $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
     });
-
 
     $(document).ready(function () {
 
         var cookies = $(".cc_dialog");
 
         if ( cookies.length){
-            alert('ja');
             $('.ctabtn').attr("disabled", true);
             $('button[class=ctabtn]').css( 'cursor', 'not-allowed' );
             
@@ -686,22 +617,8 @@
                 }
             });
         }, 250);
-        $.post("ajax.php", {'status': 'checkNightmodeState'}).done(function (data) {
-            if(data == "on") {
-                nightmode = "on";
-                $("#nightmode").attr("class", "radio on");
-                $("body").attr("class", "notrans nightmode");
-                setTimeout(function () {
-                    $("body").attr("class", "nightmode");
-                },500)
-            } else {
-                nightmode = "off";
-                $("#nightmode").attr("class", "radio off");
-                $("body").attr("class", "");
-            }
-        });
     });
+
 </script>
-<?php print_r($_SESSION)?>
 </body>
 </html>
