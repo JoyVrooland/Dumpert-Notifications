@@ -630,7 +630,6 @@
             $('#terug').addClass('terugfull').removeClass('terugsplit');
             $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
             $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer');
-            window.resizeTo(800,500);
         }else {
             comments = "on";
             $('.commentpage').show();
@@ -639,7 +638,6 @@
             $('#terug').addClass('terugsplit').removeClass('terugfull');
             $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
             $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
-            window.resizeTo(800,935);
 
         }
         $.post("ajax.php", {'status': 'commentToggle', 'val': comments}).done(function () {
