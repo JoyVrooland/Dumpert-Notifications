@@ -2,16 +2,46 @@
 include("simple_html_dom.php");
 ini_set('max_execution_time', 300); //300 seconds = 5 minuten
 
-    $array = array();
+    $filter = $_POST['filter'];
+    $melding = ($_POST['silent'] != '') ? $_POST['silent'] : '';
 
-    $data = file_get_contents ("dumpertlijst.json");
-    $json = json_decode($data, true);
-    foreach ($json as $value) {
-        array_push($array, $value);
+    if($filter === 'alleenfilmpjes'){
+        $target = 'alleenfilmpjes.json';
+        $array = array();
+        $site = 'https://www.dumpert.nl/filmpjes/';
+        $data = file_get_contents ("alleenfilmpjes.json");
+        $json = json_decode($data, true);
+        foreach ($json as $value) {
+            array_push($array, $value);
+        }
+
+        $updateoud = json_encode($array);
+        $updateresult = file_put_contents('alleenfilmpjes2.json', $updateoud);
+    }elseif($filter === 'alleenplaatjes'){
+        $target = 'alleenplaatjes.json';
+        $array = array();
+        $site = 'https://www.dumpert.nl/plaatjes/';
+        $data = file_get_contents ("alleenplaatjes.json");
+        $json = json_decode($data, true);
+        foreach ($json as $value) {
+            array_push($array, $value);
+        }
+
+        $updateoud = json_encode($array);
+        $updateresult = file_put_contents('alleenplaatjes.json', $updateoud);
+    }else{
+        $target = 'alles.json';
+        $array = array();
+        $site = 'https://www.dumpert.nl/';
+        $data = file_get_contents ("alles.json");
+        $json = json_decode($data, true);
+        foreach ($json as $value) {
+            array_push($array, $value);
+        }
+
+        $updateoud = json_encode($array);
+        $updateresult = file_put_contents('alles2.json', $updateoud);
     }
-
-    $updateoud = json_encode($array);
-    $updateresult = file_put_contents('dumpertlijst2.json', $updateoud);
 
     $headlines = array();
     $links = array();
@@ -27,7 +57,7 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
 
 
     $ch=curl_init();
-    curl_setopt($ch, CURLOPT_URL,'https://www.dumpert.nl/');
+    curl_setopt($ch, CURLOPT_URL,$site);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
@@ -73,7 +103,7 @@ $jsonarray = json_encode($headlines);
 
     if(sizeof($headlines) > 0){
 
-        $result = file_put_contents('dumpertlijst.json', $jsonarray);
+        $result = file_put_contents($target, $jsonarray);
         if($result){
             $diff = array_diff($array,$headlines);
             for($y = 0; $y < sizeof($images); $y++){
@@ -85,10 +115,12 @@ $jsonarray = json_encode($headlines);
             }
             if(sizeof($diff) > 0){
                 echo '<audio class="audiofile" controls autoplay hidden="" src="alert.mp3" type="audio/mp3">your browser does not support Html5</audio>';
-                echo "<script>popmelding();
+                if($melding !== 'silent'){
+                    echo "<script>popmelding();
                         setTimeout(function() {
                           $('.audiofile').remove();
                         }, 1000);</script>";
+                }
                 for($a = 0; $a < sizeof($images); $a++){
                     $content = file_get_contents($images[$a]);
                     $path = 'thumbs/'.$imgname[$a];

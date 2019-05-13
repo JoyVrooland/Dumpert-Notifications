@@ -3,6 +3,7 @@ include("simple_html_dom.php");
 ini_set('max_execution_time', 300); //300 seconds = 5 minuten
 
 $site = $_POST['site'];
+$fotos = array();
 
 $ch=curl_init();
 curl_setopt($ch, CURLOPT_URL,$site);
@@ -18,9 +19,16 @@ $html = new simple_html_dom();
 $html->load($query);
 
 foreach($html->find('img[class=player]') as $link){
-    echo $link->src;
+    $fotos[] = $link->src;
 }
 
+for($a = 0; $a < sizeof($fotos); $a++){
+    $foto = explode('/',$fotos[0]);
+    $content = file_get_contents($fotos[$a]);
+    $path = 'fotos/'.$foto[4];
+    file_put_contents($path, $content);
+}
+echo $path;
 
 ?>
 

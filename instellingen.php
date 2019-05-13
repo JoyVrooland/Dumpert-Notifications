@@ -1,5 +1,4 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
     <title>dumpert melding scraper</title>
@@ -59,17 +58,7 @@
         transition: all 0s linear;
     }
     .lijst{
-        margin-top: 50px;
-    }
-    @font-face {
-        font-family: dumpertfont;
-        src: url(fonts/Nimbus-Sans-D-OT-Black_32742.ttf);
-    }
-
-    @font-face {
-        font-family: dumpertfont;
-        src: url(fonts/NimbusSanL-Bol.otf);
-        font-weight: bold;
+        margin-top: 40px;
     }
     body{
         background-color: var(--main-bg-color);
@@ -277,7 +266,7 @@
         width: 18px;
         height: 15px;
         background-position: -129px -38px;
-        opacity: 0.5;
+        opacity: 0.2;
     }
     a.dumpthumb span.video {
         background-position: -184px -38px;
@@ -292,26 +281,12 @@
         z-index: 20;
         background: var(--main-bg-color);
         width: 100%;
-        /*-webkit-transition: all .22s linear;*/
-        /*-moz-transition: all .22s linear;*/
-        /*-o-transition: all .22s linear;*/
-        /*transition: all .22s linear;*/
-        text-align: center;
-        height: 48px;
+        -webkit-transition: all .22s linear;
+        -moz-transition: all .22s linear;
+        -o-transition: all .22s linear;
+        transition: all .22s linear;
     }
-    #nav > .navinhoud > img{
-        float: left;
-        width: 40px;
-        margin: 5px;
-        cursor: pointer;
-        margin-right: -45px;
-    }
-    #nav > .navinhoud > p{
-        font-size: 2em;
-        text-transform: uppercase;
-        font-family: dumpertfont;
-        color: var(--dumpthumb-h1);
-    }
+
     .content{
         margin:0 auto;
         width: 300px;
@@ -482,31 +457,24 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
         user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
-        display: none;
-        position: fixed;
-        width: 100%;
-        z-index: 100;
     }
 
     .instellingen{
         text-align: center;
-        padding: 2px;
-        margin-bottom: -16px;
+        padding: 10px;
     }
-    .instellingen > p{
+    .instellingen > span{
         font-weight: bold;
         text-transform: uppercase;
-        font-size: 1.8em;
-        font-family: dumpertfont;
+        font-size: 1.5em;
     }
     .instellingen > i{
         font-weight: bold;
         text-transform: uppercase;
         font-size: 2em;
-        margin-left: 15px;
+        margin-left: 10px;
         position: relative;
         cursor: pointer;
-        margin-top: 6px;
     }
     .closesettings{
         float: left;
@@ -561,21 +529,12 @@
 
 </style>
 <body>
-<div class="notrunning">
-    <div class="content">
-        <img src="fav.png" width="300px">
-        <center>
-            <button class="ctabtn" onclick="opstarten()">Start de applicatie</button>
-            <span class="version">© Dumpert Notifications - v</span>
-        </center>
-    </div>
-</div>
 <div class="instellingpopup">
-    <nav class="instellingen">
-        <i class="closesettings fa fa-close"></i>
-        <p>Instellingen</p>
-    </nav>
-    <div class="instellingsection">Voorkeuren</div>
+<nav class="instellingen">
+    <i class="closesettings fa fa-close"></i>
+    <span>Instellingen</span>
+</nav>
+<div class="instellingsection">Voorkeuren</div>
     <div class="knopveld on commentsknop">
         <span class="knoptitel">Dumpert comments</span>
         <div id="toggle" class="radio off">
@@ -590,7 +549,7 @@
             <div class="switch"></div>
         </div>
     </div>
-    <div class="instellingsection">Filter</div>
+<div class="instellingsection">Filter</div>
     <div id="alles" class="knopveld off">
         <span class="knoptitel">Alles</span>
         <i class="material-icons radio2 on" style="font-size:36px">check</i>
@@ -605,29 +564,7 @@
     </div>
     <div class="versie"></div>
 </div>
-<div id="nav">
-    <div class="navinhoud">
-        <img class="settingstoggle" src="menu.png">
-        <img class="settingstoggle" style="display:none" src="menunight.png">
-        <p>Dumpert</p>
-    </div>
-</div>
-<div class="lijst">
-</div>
-<div class="framelist">
-        <div id="terug" class="terug">
-            <div class="menubar">
-            <i title="Terug naar het menu" class="fas fa-angle-down" style="font-size:26px"></i>
-            <img class="info" src="fav.png" width="36px">
-            <i id="comtoggle" title="" class='fas fa-comments'></i>
-        </div>
-    </div>
-    <iframe id="vidplayer" src="" width="100%" height="500px" class="fullplayer" allowfullscreen></iframe>
-    <div id="picframe" class="dumpertpicplayer hidden">
-        <a id="piclink" href="" target="_blank" title="volledige grote"><img id="picplayer" src="" class="hidden"></a>
-    </div>
-    <iframe src="" width="100%" height="500px" class="commentpage" style="display: none;"></iframe>
-</div>
+</body>
 <script>
     var link = window.location.search;
     var nowactive = '';
@@ -635,18 +572,15 @@
     var comments = "off";
     var nightmode = "off";
     var thumbtype = '';
-    var filter = 'alles';
-
-    var versie = '1.0.5';
+    var versie = 'v1.0.4';
 
     if(link === "?run"){
-        window.open('index.php?running','Dumpert Notifications','width=400,height=500,resizable=1');
+        window.open('instellingen.php','Dumpert Notifications','width=400,height=500,resizable=1');
     }else if(link === "?running"){
         $('.notrunning').remove();
         $('.wrapper').show();
     }else{
         $('.lijst').remove();
-        $('#nav').remove();
     }
     function updatefoto(site) {
         $.post("dumpertfotos.php", {'site': site}).done(function (data) {
@@ -661,12 +595,32 @@
         })
     }
 
-    function updatelist(melding) {
-        if (melding == null){
-            melding = '';
-        }
-        $.post("dumpertmelding.php", {'filter': filter, 'silent': melding}).done(function (data) {
+    function updatelist() {
+        $.post("dumpertmelding.php", {}).done(function (data) {
             $(".lijst").html(data);
+            $('#comtoggle').on('click', function () {
+                if($('#comtoggle').hasClass("commenton") === true) {
+                    comments = "off";
+                    $('.commentpage').hide();
+                    $('#toggle').addClass('off').removeClass('on');
+                    $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
+                    $('#terug').addClass('terugfull').removeClass('terugsplit');
+                    $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
+                    $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer');
+                    window.resizeTo(800,500);
+                }else {
+                    comments = "on";
+                    $('.commentpage').show();
+                    $('#toggle').addClass('on').removeClass('off');
+                    $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
+                    $('#terug').addClass('terugsplit').removeClass('terugfull');
+                    $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
+                    $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
+                    window.resizeTo(800,935);
+
+                }
+                $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
+            });
             $('.linkbtn').click(function () {
                 var id = this.id;
                 var val = $('#link' + id).text();
@@ -685,7 +639,6 @@
                 $('.framelist').show();
                 $('.wrapper ').hide();
                 $('.lijst').hide();
-                $('#nav').hide();
                 updatecomment(site);
                 if(comments == "on"){
                     window.resizeTo(800,935);
@@ -705,7 +658,7 @@
     updatelist();
     setInterval(function () {
         updatelist();
-    }, 30000);
+    }, 1000000);
 
     function opstarten(){
         var status = "off";
@@ -742,7 +695,6 @@
         // window.resizeTo(400,480);
         $('.lijst').show();
         $('.wrapper ').show();
-        $('#nav').show();
         $('.framelist').hide();
         $('#vidplayer').attr('src', '');
         $('.commentpage').attr('src', '');
@@ -762,10 +714,10 @@
             $("#nightmode").attr("class", "radio on");
             $("body").attr("class", "nightmode");
         }
-        $(".settingstoggle").toggle();
         $.post("ajax.php", {'status': 'nightmodeToggle', 'val': nightmode}).done(function (data) {
         });
     });
+
 
     $('.commentsknop').on('click', function () {
         if($('#toggle').hasClass("on") === true) {
@@ -793,112 +745,27 @@
         });
     });
 
-    $('.settingstoggle').click(function () {
-        $('.instellingpopup').stop().fadeToggle();
-        $('.navinhoud').stop().fadeToggle();
-    });
-    $('.closesettings').click(function () {
-        $('.instellingpopup').stop().fadeToggle();
-        $('.navinhoud').stop().fadeToggle();
-    });
 
 
-    $('#comtoggle').on('click', function () {
-        if($('#comtoggle').hasClass("commenton") === true) {
-            comments = "off";
-            $('.commentpage').hide();
-            $('#toggle').addClass('off').removeClass('on');
-            $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
-            $('#terug').addClass('terugfull').removeClass('terugsplit');
-            $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
-            $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer');
-            window.resizeTo(800,500);
-        }else {
-            comments = "on";
-            $('.commentpage').show();
-            $('#toggle').addClass('on').removeClass('off');
-            $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
-            $('#terug').addClass('terugsplit').removeClass('terugfull');
-            $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
-            $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
-            window.resizeTo(800,935);
 
-        }
-        $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
-    });
-    //filter sectie
 
-    $('#alles').click(function () {
-        $("#alles").attr("class", "knopveld on");
-        $("#alleenfilmpjes").attr("class", "knopveld off");
-        $("#alleenplaatjes").attr("class", "knopveld off");
-        filter = 'alles';
-        $.post("ajax.php", {'status': 'filterradio', 'val': filter}).done(function () {
-            updatelist('silent');
-        });
-    });
-    $('#alleenfilmpjes').click(function () {
-        $("#alleenfilmpjes").attr("class", "knopveld on");
-        $("#alles").attr("class", "knopveld off");
-        $("#alleenplaatjes").attr("class", "knopveld off");
-        filter = 'alleenfilmpjes';
-        $.post("ajax.php", {'status': 'filterradio', 'val': filter}).done(function () {
-            updatelist('silent');
-        });
-    });
-    $('#alleenplaatjes').click(function () {
-        $("#alleenplaatjes").attr("class", "knopveld on");
-        $("#alleenfilmpjes").attr("class", "knopveld off");
-        $("#alles").attr("class", "knopveld off");
-        filter = 'alleenplaatjes';
-        $.post("ajax.php", {'status': 'filterradio', 'val': filter}).done(function () {
-            updatelist('silent');
-        });
-    });
 
-    $(document).ready(function () {
-        $.post("ajax.php", {'status': 'checkFilterState'}).done(function (data) {
-            if(data == "alles") {
-                filter = "alles";
-                $("#alles").attr("class", "knopveld on");
-                $("#alleenfilmpjes").attr("class", "knopveld off");
-                $("#alleenplaatjes").attr("class", "knopveld off");
-                $.post("ajax.php", {'status': 'filterradio', 'val': filter});
-                updatelist('silent');
-            }
-            else if(data == "alleenfilmpjes") {
-                filter = "alleenfilmpjes";
-                $("#alleenfilmpjes").attr("class", "knopveld on");
-                $("#alles").attr("class", "knopveld off");
-                $("#alleenplaatjes").attr("class", "knopveld off");
-                $.post("ajax.php", {'status': 'filterradio', 'val': filter});
-            }
-            else if(data == "alleenplaatjes") {
-                filter = "alleenplaatjes";
-                $("#alleenplaatjes").attr("class", "knopveld on");
-                $("#alleenfilmpjes").attr("class", "knopveld off");
-                $("#alles").attr("class", "knopveld off");
-                $.post("ajax.php", {'status': 'filterradio', 'val': filter});
-                updatelist('silent');
-            }else{
-                filter = "alleen";
-            }
-        });
-    });
+
+
+
+
 
 
     $(document).ready(function () {
+
         $('.versie').html(versie);
-        $('.version').append(versie);
-
-
         var cookies = $(".cc_dialog");
 
         if ( cookies.length){
             alert('ja');
             $('.ctabtn').attr("disabled", true);
             $('button[class=ctabtn]').css( 'cursor', 'not-allowed' );
-            
+
             $('.cc_b_ok').on('click', function () {
                 $('.ctabtn').attr("disabled", false);
                 $('button[class=ctabtn]').css( 'cursor', 'pointer' );
@@ -929,7 +796,6 @@
         $.post("ajax.php", {'status': 'checkNightmodeState'}).done(function (data) {
             if(data == "on") {
                 nightmode = "on";
-                $(".settingstoggle").toggle();
                 $("#nightmode").attr("class", "radio on");
                 $("body").attr("class", "notrans nightmode");
                 setTimeout(function () {
@@ -945,5 +811,4 @@
 
 </script>
 
-</body>
 </html>

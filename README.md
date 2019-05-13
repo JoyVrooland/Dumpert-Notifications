@@ -1,4 +1,4 @@
-# Dumpert Notificatie v1.0
+# Dumpert Notificatie v1.0.5
 
 Applicatie die je op de hoogte houd van iedere nieuwe video die word geupload op Dumpert.
 
@@ -6,6 +6,9 @@ Applicatie die je op de hoogte houd van iedere nieuwe video die word geupload op
 
 * Desktop notificatie / audio notificatie
 * Videos afspelen
+* Afbeeldingen weergeven
+* Nightmode
+* Comments weergeven
 * Automatische updates
 
 
@@ -25,12 +28,7 @@ Zet de server aan en je bent klaar om te beginnen
 
 ### Voorbereidingen
 
-Typ het volgende om de applicatie te starten.
-
-```
-localhost/?run
-```
-
+Klik op de "Start de applicatie" knop om de applicatie te starten
 
 
 ## Gebouwd op

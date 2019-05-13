@@ -8,6 +8,17 @@ if($_POST["status"] == "commentToggle"){
     echo $_POST['val'];
 }
 
+if($_POST["status"] == "filterradio"){
+    $filter = $_POST['val'];
+    if(strlen($filter) > 0){
+        $_SESSION['filter'] = $_POST['val'];
+    }
+    echo $_POST['val'];
+}
+if($_POST["status"] == "checkFilterState"){
+    echo $_SESSION['filter'];
+}
+
 if($_POST["status"] == "checkToggleState"){
     echo $_SESSION['comments'];
 }
