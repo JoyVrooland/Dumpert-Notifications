@@ -26,7 +26,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="627">
@@ -115,7 +115,6 @@
       <find>terug</find>
       <find>.show</find>
       <find>comtoggle</find>
-      <find>toggle</find>
       <find>foto</find>
       <find>fa-comments</find>
       <find>ja</find>

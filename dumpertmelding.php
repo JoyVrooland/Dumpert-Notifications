@@ -117,7 +117,7 @@ $jsonarray = json_encode($headlines);
                 $picturename = explode('/', $picturename);
                 $imgname[] = $picturename[2];
             }
-            if(sizeof($diff) > 0){
+            if(sizeof($diff) > 0 || $melding === 'opstarten'){
                 echo '<audio class="audiofile" controls autoplay hidden="" src="alert.mp3" type="audio/mp3">your browser does not support Html5</audio>';
                 echo "<script>popmelding('".$melding."');
                     setTimeout(function() {
@@ -165,7 +165,7 @@ $jsonarray = json_encode($headlines);
 
         }
     }else{
-        echo 'er is een probleem met je internet<br><button value="Refresh Page" onClick="window.location.reload();">Refresh page</button>';
+        echo '<p class="melding">er is een probleem met je internet</p><br><button value="Refresh Page" onClick="window.location.reload();">Refresh page</button>';
     }
 
 ?>

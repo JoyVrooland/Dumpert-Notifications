@@ -603,7 +603,7 @@
         </div>
     </div>
     <div class="instellingsection">Filter</div>
-    <div id="alles" class="knopveld off">
+    <div id="alles" class="knopveld on">
         <span class="knoptitel">Alles</span>
         <i class="material-icons radio2 on" style="font-size:36px">check</i>
     </div>
@@ -907,6 +907,7 @@
                 $("#alles").attr("class", "knopveld off");
                 $("#alleenplaatjes").attr("class", "knopveld off");
                 $.post("ajax.php", {'status': 'filterradio', 'val': filter});
+                updatelist('silent');
             }
             else if(data == "alleenplaatjes") {
                 filter = "alleenplaatjes";
