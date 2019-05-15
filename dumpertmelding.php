@@ -4,43 +4,44 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
 
     $filter = $_POST['filter'];
     $melding = ($_POST['silent'] != '') ? $_POST['silent'] : '';
+    $nsfw = $_POST['nsfw'];
 
     if($filter === 'alleenfilmpjes'){
-        $target = 'alleenfilmpjes.json';
+        $target = 'json/alleenfilmpjes.json';
         $array = array();
         $site = 'https://www.dumpert.nl/filmpjes/';
-        $data = file_get_contents ("alleenfilmpjes.json");
+        $data = file_get_contents ("json/alleenfilmpjes.json");
         $json = json_decode($data, true);
         foreach ($json as $value) {
             array_push($array, $value);
         }
 
         $updateoud = json_encode($array);
-        $updateresult = file_put_contents('alleenfilmpjes2.json', $updateoud);
+        $updateresult = file_put_contents('json/alleenfilmpjes2.json', $updateoud);
     }elseif($filter === 'alleenplaatjes'){
-        $target = 'alleenplaatjes.json';
+        $target = 'json/alleenplaatjes.json';
         $array = array();
         $site = 'https://www.dumpert.nl/plaatjes/';
-        $data = file_get_contents ("alleenplaatjes.json");
+        $data = file_get_contents ("json/alleenplaatjes.json");
         $json = json_decode($data, true);
         foreach ($json as $value) {
             array_push($array, $value);
         }
 
         $updateoud = json_encode($array);
-        $updateresult = file_put_contents('alleenplaatjes.json', $updateoud);
+        $updateresult = file_put_contents('json/alleenplaatjes.json', $updateoud);
     }else{
-        $target = 'alles.json';
+        $target = 'json/alles.json';
         $array = array();
         $site = 'https://www.dumpert.nl/';
-        $data = file_get_contents ("alles.json");
+        $data = file_get_contents ("json/alles.json");
         $json = json_decode($data, true);
         foreach ($json as $value) {
             array_push($array, $value);
         }
 
         $updateoud = json_encode($array);
-        $updateresult = file_put_contents('alles2.json', $updateoud);
+        $updateresult = file_put_contents('json/alles2.json', $updateoud);
     }
 
     $headlines = array();
@@ -63,6 +64,9 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_COOKIE, "nsfw=".$nsfw);
+
     $query = curl_exec($ch);
     curl_close($ch);
 
@@ -115,12 +119,10 @@ $jsonarray = json_encode($headlines);
             }
             if(sizeof($diff) > 0){
                 echo '<audio class="audiofile" controls autoplay hidden="" src="alert.mp3" type="audio/mp3">your browser does not support Html5</audio>';
-                if($melding !== 'silent'){
-                    echo "<script>popmelding();
-                        setTimeout(function() {
-                          $('.audiofile').remove();
-                        }, 1000);</script>";
-                }
+                echo "<script>popmelding('".$melding."');
+                    setTimeout(function() {
+                      $('.audiofile').remove();
+                    }, 1000);</script>";
                 for($a = 0; $a < sizeof($images); $a++){
                     $content = file_get_contents($images[$a]);
                     $path = 'thumbs/'.$imgname[$a];

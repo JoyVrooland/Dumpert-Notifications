@@ -15,6 +15,17 @@ if($_POST["status"] == "filterradio"){
     }
     echo $_POST['val'];
 }
+if($_POST["status"] == "nsfwToggle"){
+    $val = $_POST['nsfw'];
+    if(strlen($filter) > 0){
+        $_SESSION['nsfw'] = $val;
+    }
+    echo $_POST['nsfw'];
+}
+if($_POST["status"] == "checkNsfwState"){
+    echo $_SESSION['nsfw'];
+}
+
 if($_POST["status"] == "checkFilterState"){
     echo $_SESSION['filter'];
 }

@@ -1,103 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/index.php" description="&lt;script type=&quot;text/javascript&quot; src=&quot;//www.PrivacyP..." line="19" />
+    <bookmark url="file://$PROJECT_DIR$/index.php" description="&lt;script type=&quot;text/javascript&quot; src=&quot;//www.PrivacyP..." line="83" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10c46082-f12c-40a9-91f1-e46980484490" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cron.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dumpertfotos.php" beforeDir="false" afterPath="$PROJECT_DIR$/dumpertfotos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dumpertlijst.json" beforeDir="false" afterPath="$PROJECT_DIR$/dumpertlijst.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dumpertlijst2.json" beforeDir="false" afterPath="$PROJECT_DIR$/dumpertlijst2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alleenfilmpjes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alleenfilmpjes2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alleenplaatjes.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alleenplaatjes2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alles.json" beforeDir="false" afterPath="$PROJECT_DIR$/alles.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alles2.json" beforeDir="false" afterPath="$PROJECT_DIR$/alles2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dumpertlijst.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dumpertlijst2.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/dumpertmelding.php" beforeDir="false" afterPath="$PROJECT_DIR$/dumpertmelding.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679653_d6568431.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679665_7932eff6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679699_e01db58c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679709_88e51db5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679749_c2c3f051.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679759_966ada23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679771_11df4371.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679779_28b391e4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679825_0e4aa0dc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679833_1e621a45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679837_79461841.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679839_254fdff5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679851_22394016.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679853_6264c3a7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679865_22b4d3d3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679891_243beea1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679893_73e54b18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679913_875c57e4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679921_4c26fe34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679923_92192d18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679925_4e8fb41e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679927_d33c5749.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679931_c4b3a98f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679935_2de7e9ea.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679949_73b70466.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679955_aa70f5b2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679957_5731b7c9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7679983_6bf66980.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680007_28c7ba4f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680021_2baff958.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680035_ca45a55a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680039_cb0d2cdb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680057_9dbf592b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680061_48e5fda2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680067_3667c16c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680069_95f1e920.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680107_0e0bebde.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680121_91ef25ae.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680129_09c484f0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680131_eff87bda.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680147_a771a1e4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680171_45d92c58.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680205_8e6abf35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680207_4d0e3655.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680217_a3203111.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680245_47c35ec5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680247_4058b231.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680251_7e900a3d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680267_8eae6027.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680281_adb33f70.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680287_7fccba77.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680301_143754fe.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680303_de5a1210.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680323_c8d117ee.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680327_0083574a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680329_49dbc3a3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680477_e585cd7e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680479_a00c7e67.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680491_149b15e6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680529_7d724245.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680543_4ab01b1d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680557_0f21596f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680573_b985ec6a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680585_0258addc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680597_31a75c79.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680613_83f88d24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680631_c94d02b8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680635_6adb2af4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680637_e0ebefa3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680641_21b0608d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680643_0057cb99.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680655_c2405e74.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680679_b0cc5597.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680691_fd3c1b53.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680701_1a96503a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680705_9e34b60f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680715_d4de5f34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680729_becb043d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680755_1b9185c4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680757_0678ca24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680791_ea733a64.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680813_9b1704e2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680817_b0de6f6e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/thumbs/7680835_ab72099b.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,41 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="568" column="61" selection-start-line="568" selection-start-column="61" selection-end-line="568" selection-end-column="61" />
-              <folding>
-                <element signature="n#style#0;n#img#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#iframe#1;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#26855#28250#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="34">
-                <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/instellingen.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7463">
-              <caret line="721" column="20" selection-start-line="721" selection-start-column="8" selection-end-line="721" selection-end-column="20" />
-              <folding>
-                <element signature="n#style#0;n#i#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#i#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1557771880807" expanded="true" signature="19157:19221" ph="..." />
-              </folding>
+            <state relative-caret-position="627">
+              <caret line="985" column="27" lean-forward="true" selection-start-line="985" selection-start-column="27" selection-end-line="985" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -152,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+            <state relative-caret-position="357">
+              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -161,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dumpertfotos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+            <state relative-caret-position="578">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -179,17 +65,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dumpertmelding.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+            <state relative-caret-position="221">
+              <caret line="124" column="40" lean-forward="true" selection-start-line="124" selection-start-column="40" selection-end-line="124" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dumpertlijst.json">
+        <entry file="file://$PROJECT_DIR$/dumpertcomments.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="35" selection-start-column="35" selection-end-column="35" />
+            <state relative-caret-position="255">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
@@ -204,7 +90,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Project2/webscrape.php">
+        <entry file="file://$PROJECT_DIR$/../project2/webscrape.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
               <caret line="28" selection-start-line="28" selection-end-line="28" />
@@ -216,19 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>iframe</find>
-      <find>--main</find>
-      <find>transition</find>
-      <find>trans</find>
-      <find>html</find>
-      <find>*</find>
-      <find>body</find>
-      <find>toggle2</find>
-      <find>.radio</find>
-      <find>knopveld</find>
-      <find>version</find>
-      <find>versionversie</find>
-      <find>select</find>
       <find>instellingpopup</find>
       <find>img</find>
       <find>lijst</find>
@@ -236,16 +109,29 @@
       <find>dumper</find>
       <find>dumperfont</find>
       <find>instellingen</find>
-      <find>instellingen</find>
       <find>#nav</find>
       <find>nav</find>
-      <find>settingstoggle</find>
       <find>nightmode</find>
       <find>terug</find>
       <find>.show</find>
       <find>comtoggle</find>
       <find>toggle</find>
       <find>foto</find>
+      <find>fa-comments</find>
+      <find>ja</find>
+      <find>Nsfw</find>
+      <find>settingstoggle</find>
+      <find>alleenplaatjes</find>
+      <find>alleenfilmpjes</find>
+      <find>knoptitel</find>
+      <find>nsfw =</find>
+      <find>filter</find>
+      <find>popmelding</find>
+      <find>normale</find>
+      <find>nsfw</find>
+      <find>nsfwknop</find>
+      <find>.nsfw</find>
+      <find>flex</find>
     </findStrings>
     <replaceStrings>
       <replace>dump</replace>
@@ -272,18 +158,18 @@
         <option value="$PROJECT_DIR$/cron.php" />
         <option value="$PROJECT_DIR$/dumpertcomments.php" />
         <option value="$PROJECT_DIR$/instellingen.html" />
-        <option value="$PROJECT_DIR$/ajax.php" />
         <option value="$PROJECT_DIR$/instellingen.php" />
-        <option value="$PROJECT_DIR$/dumpertmelding.php" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/dumpertmelding.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/ajax.php" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
-    <option name="y" value="68" />
-    <option name="width" value="1936" />
+    <option name="x" value="-2" />
+    <option name="y" value="67" />
+    <option name="width" value="1937" />
     <option name="height" value="1014" />
   </component>
   <component name="ProjectView">
@@ -356,17 +242,18 @@
       <workItem from="1557613155169" duration="6205000" />
       <workItem from="1557676739212" duration="3342000" />
       <workItem from="1557747219029" duration="14913000" />
+      <workItem from="1557910046779" duration="5513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73053000" />
+    <option name="totallyTimeSpent" value="78566000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1935" height="1175" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4995206" visible="true" weight="0.124200426" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4995206" visible="true" weight="0.12533334" />
       <window_info id="Structure" order="1" sideWeight="0.5004794" side_tool="true" weight="0.117866665" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -405,7 +292,7 @@
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/dumpertlijst.json" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/dumpertmelding.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/index.php" />
-    <entry file="file://$PROJECT_DIR$/../Project2/index.php">
+    <entry file="file://$PROJECT_DIR$/../project2/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="5" selection-start-column="5" selection-end-column="5" />
@@ -417,7 +304,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Project2/assents/css/style.css">
+    <entry file="file://$PROJECT_DIR$/../project2/assents/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="148" column="14" selection-start-line="148" selection-start-column="11" selection-end-line="148" selection-end-column="14" />
@@ -427,38 +314,14 @@
     <entry file="file://$PROJECT_DIR$/allsprites-s6c30d074dd.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/instellingen.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3132">
-          <caret line="474" column="5" lean-forward="true" selection-start-line="474" selection-start-column="4" selection-end-line="474" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dumpertcomments.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dumpertfotos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+    <entry file="file://$PROJECT_DIR$/instellingen.html" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="34">
+            <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
@@ -469,7 +332,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Project2/webscrape.php">
+    <entry file="file://$PROJECT_DIR$/../project2/webscrape.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
@@ -483,46 +346,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dumpertmelding.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/instellingen.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7463">
-          <caret line="721" column="20" selection-start-line="721" selection-start-column="8" selection-end-line="721" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#i#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1557771880807" expanded="true" signature="19157:19221" ph="..." />
-          </folding>
+        <state relative-caret-position="352">
+          <caret line="421" column="14" selection-start-line="421" selection-start-column="8" selection-end-line="421" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="34">
-            <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/alles.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="117" selection-start-column="117" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dumpertcomments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dumpertfotos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dumpertmelding.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="124" column="40" lean-forward="true" selection-start-line="124" selection-start-column="40" selection-end-line="124" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="568" column="61" selection-start-line="568" selection-start-column="61" selection-end-line="568" selection-end-column="61" />
-          <folding>
-            <element signature="n#style#0;n#img#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#iframe#1;n#div#5;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#26855#28250#0#HTML" />
-          </folding>
+        <state relative-caret-position="627">
+          <caret line="985" column="27" lean-forward="true" selection-start-line="985" selection-start-column="27" selection-end-line="985" selection-end-column="27" />
         </state>
       </provider>
     </entry>
