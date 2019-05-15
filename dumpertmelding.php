@@ -134,7 +134,7 @@ $jsonarray = json_encode($headlines);
             for($x = 0; $x < sizeof($links); $x++){
                 if($dumbtype[$x] == 'video'){
                     echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn" title="'.$headlines[$x].'">
-                         <img src="thumbs/'.$imgname[$x].'" alt="Sporten blijft slecht voor je" width="100" height="100">
+                         <img src="thumbs/'.$imgname[$x].'" alt="Sporten blijft slecht voor je" onerror="if (this.src != \'error.png\') this.src = \'error.png\';" width="100" height="100">
                          <span class="video"></span>
                          <div class="details">
                              <h1>'.$headlines[$x].'</h1>
@@ -148,7 +148,7 @@ $jsonarray = json_encode($headlines);
                     echo '<p class="hidden" id="info'.$x.'">'.$links[$x].'</p>';
                 }else{
                     echo '<a id="'.$x.'" href="#" class="dumpthumb linkbtn" title="'.$headlines[$x].'">
-                         <img src="thumbs/'.$imgname[$x].'" alt="Sporten blijft slecht voor je" width="100" height="100">
+                         <img src="thumbs/'.$imgname[$x].'" alt="Sporten blijft slecht voor je" onerror="if (this.src != \'error.png\') this.src = \'error.png\';" width="100" height="100">
                          <span id="thumb'.$x.'" class="foto"></span>
                          <div class="details">
                              <h1>'.$headlines[$x].'</h1>

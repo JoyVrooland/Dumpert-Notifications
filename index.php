@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start();
+if(empty($_SESSION)){
+    $_SESSION['nsfw'] = "deleted";
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -290,7 +294,7 @@
 
             #nav{
                 position: fixed;
-                z-index: 20;
+                z-index: 100;
                 background: var(--main-bg-color);
                 width: 100%;
                 /*-webkit-transition: all .22s linear;*/
@@ -312,6 +316,13 @@
                 text-transform: uppercase;
                 font-family: dumpertfont;
                 color: var(--dumpthumb-h1);
+            }
+            .mainnav{
+                box-shadow: black 0px -13px 9px 20px;
+            }
+            .navinhoud{
+                background: black;
+                height: 40px;
             }
             .content{
                 margin:0 auto;
@@ -472,6 +483,88 @@
                 text-shadow: 0px 1px 3px #272634;
             }
 
+            /* --------searchpage-------*/
+            .zoeken{
+                color: white;
+                font-size: 25px;
+                position: absolute;
+                right: 20px;
+                top: 12px;
+                cursor: pointer;
+            }
+            .searchpage{
+                background: #191919;
+                height: 100vh;
+                color: #fff;
+                font-weight: bold;
+                min-width: 330px;
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                          supported by Chrome and Opera */
+                position: fixed;
+                width: 100%;
+                z-index: 100;
+            }
+            .zoekbalk > p{
+                float: right;
+                font-size: 1.4em !important;
+            }
+            .zoekblok {
+                /* background-color: white; */
+                /* padding: 5px; */
+                display: table;
+                width: 100%;
+                /* border-radius: 6px; */
+                position: absolute;
+                top: 0;
+            }
+            .zoekplaceholder{
+                color: darkgray;
+                font-size: 17px;
+                right: -6px;
+                /* top: 12px; */
+                cursor: pointer;
+                line-height: inherit;
+                margin-right: 10px;
+                margin-left: 2px;
+                position: relative;
+            }
+            .zoekbar{
+                display: table-cell;
+                width: 98%;
+                border: none;
+                margin-left: 10px;
+            }
+            .zoekbg {
+                background: white;
+                display: table;
+                width: 100%;
+                padding: 5px;
+                border-radius: 5px;
+                margin-left: 5px;
+            }
+            .zoekterug{
+                color: white;
+                font-family: dumpertfont;
+                text-transform: uppercase;
+                font-size: 1.3em;
+                padding: 8px;
+                padding-left: 15px;
+                cursor: pointer;
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                          supported by Chrome and Opera */
+            }
+
+            textarea, select, input, button { outline: none; }
 
             /* --------instellingen--------*/
             .instellingpopup{
@@ -490,7 +583,7 @@
                 display: none;
                 position: fixed;
                 width: 100%;
-                z-index: 100;
+                z-index: 1000;
             }
 
             .instellingen{
@@ -617,11 +710,21 @@
     </div>
     <div class="versie"></div>
 </div>
+<div class="searchpage" style="display: none">
+</div>
 <div id="nav">
-    <div class="navinhoud">
+    <div class="navinhoud mainnav">
         <img class="settingstoggle" src="menu.png">
         <img class="settingstoggle" style="display:none" src="menunight.png">
+        <i class="zoeken fa fa-search" aria-hidden="true"></i>
         <p>Dumpert</p>
+    </div>
+    <div class="navinhoud zoekblok" style="display: none">
+        <div class="zoekbg" style="">
+            <i class="zoekplaceholder fa fa-search" aria-hidden="true" style="display: table-cell; width:1px;"></i>
+            <input class="zoekbar" type="text" placeholder="Typ hier je trefwoord" style="display:table-cell;">
+        </div>
+        <label class="zoekterug" for="MyInput" style="display:table-cell; width:1px">terug</label>
     </div>
 </div>
 <div class="lijst">
@@ -674,6 +777,50 @@
         })
     }
 
+    function search(key) {
+        $.post("search.php", {'filter': key, 'nsfw': nsfw}).done(function (data) {
+            $(".searchpage").html(data);
+            $('.linkbtn').click(function () {
+                var id = this.id;
+                var val = $('#link' + id).text();
+                var site = $('#info' + id).text();
+                nowactive = id;
+
+                if($('#thumb' + nowactive).hasClass('foto') === true){
+                    updatefoto(site);
+                    $('#vidplayer').hide();
+                    $('#picframe').show();
+                }else{
+                    $('#picframe').hide();
+                    $('#vidplayer').show();
+                    $('#vidplayer').attr('src', val);
+                }
+                $('.framelist').show();
+                $('.wrapper ').hide();
+                $('.searchpage').hide();
+                $('.lijst').hide();
+                $('#nav').hide();
+                updatecomment(site);
+                if(comments == "on"){
+                    window.resizeTo(800,935);
+                }else{
+                    window.resizeTo(800,500);
+                }
+            });
+            $(".info").click(function () {
+                if(count < 1){
+                    var val = $('#info' + nowactive).text();
+                    window.open(val);
+                    count++;
+                }
+            });
+        });
+    }
+    updatelist();
+    setInterval(function () {
+        updatelist();
+    }, 30000);
+
     function updatelist(melding) {
         if (melding == null){
             melding = '';
@@ -715,10 +862,6 @@
             });
         });
     }
-    updatelist();
-    setInterval(function () {
-        updatelist();
-    }, 30000);
 
     function opstarten(){
         var status = "off";
@@ -764,6 +907,32 @@
         $('#picplayer').attr('src', '');
         $('#piclink').attr('href', '');
         count = 0;
+    });
+
+    $(".zoekterug").click(function () {
+        $('.zoekblok').toggle( "slide" );
+        $('.searchpage').fadeToggle();
+        setTimeout(function () {
+            $('.zoekbar').val('');
+            $('.searchpage').html('');
+        },250);
+        $('.zoekbar').focus();
+    });
+
+    $(".zoeken ").click(function () {
+        $('.zoekblok').toggle( "slide" );
+        $('.searchpage').fadeToggle();
+        $('.zoekbar').focus();
+    });
+
+    var timer = null;
+    $('.zoekbar').keyup(function(){
+        $('.searchpage').html('');
+        var searchkey = $('.zoekbar').val();
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            search(searchkey);
+        }, 100)
     });
 
 
@@ -828,11 +997,11 @@
 
     $('.settingstoggle').click(function () {
         $('.instellingpopup').stop().fadeToggle();
-        $('.navinhoud').stop().fadeToggle();
+        $('.mainnav').stop().fadeToggle();
     });
     $('.closesettings').click(function () {
         $('.instellingpopup').stop().fadeToggle();
-        $('.navinhoud').stop().fadeToggle();
+        $('.mainnav').stop().fadeToggle();
     });
 
 
@@ -982,7 +1151,6 @@
         });
 
         $.post("ajax.php", {'status': 'checkNsfwState'}).done(function (data) {
-            alert(data);
             if(data == 1) {
                 nsfw = "1";
                 $("#nsfw").attr("class", "radio on");
