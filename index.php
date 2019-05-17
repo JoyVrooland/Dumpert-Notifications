@@ -18,6 +18,8 @@ if(empty($_SESSION)){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/1.17.1/simple-lightbox.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/1.17.1/simplelightbox.css" />
     <script src="push.js"></script>
 </head>
 <!-- Cookie Consent by https://PrivacyPolicies.com -->
@@ -43,6 +45,7 @@ if(empty($_SESSION)){
                 --radio-border: #469d1c;
                 --radio-background: #168d09;
                 --radio-background2: #5bcf24;
+                --search-bg: #ededed;
             }
             .nightmode{
                 --main-bg-color: #191919;
@@ -55,6 +58,7 @@ if(empty($_SESSION)){
                 --radio-border: #318194;
                 --radio-background: #53b8d0;
                 --radio-background2: #3a889a;
+                --search-bg: #191919;
             }
             .notrans{
                 -webkit-transition: all 0s linear;
@@ -124,6 +128,7 @@ if(empty($_SESSION)){
                 height: 50%;
                 z-index: -1;
                 position: fixed;
+                /*overflow-y: hidden !important;*/
             }
             .dumpertpicplayerfull{
                 display: table-cell;
@@ -135,6 +140,7 @@ if(empty($_SESSION)){
                 height: 100%;
                 z-index: -1;
                 position: fixed;
+                /*overflow-y: hidden !important;*/
             }
             #picplayer{
                 margin: 0px auto;
@@ -303,6 +309,7 @@ if(empty($_SESSION)){
                 /*transition: all .22s linear;*/
                 text-align: center;
                 height: 48px;
+                display:none;
             }
             #nav > .navinhoud > img{
                 float: left;
@@ -318,10 +325,10 @@ if(empty($_SESSION)){
                 color: var(--dumpthumb-h1);
             }
             .mainnav{
-                box-shadow: black 0px -13px 9px 20px;
+                box-shadow: var(--main-bg-color) 0px -13px 9px 20px;
             }
             .navinhoud{
-                background: black;
+                background: var(--main-bg-color);
                 height: 40px;
             }
             .content{
@@ -485,7 +492,7 @@ if(empty($_SESSION)){
 
             /* --------searchpage-------*/
             .zoeken{
-                color: white;
+                color: var(--dumpthumb-h1);
                 font-size: 25px;
                 position: absolute;
                 right: 20px;
@@ -493,8 +500,7 @@ if(empty($_SESSION)){
                 cursor: pointer;
             }
             .searchpage{
-                background: #191919;
-                height: 100vh;
+                background: var(--search-bg);
                 color: #fff;
                 font-weight: bold;
                 min-width: 330px;
@@ -505,9 +511,8 @@ if(empty($_SESSION)){
                 -ms-user-select: none; /* Internet Explorer/Edge */
                 user-select: none; /* Non-prefixed version, currently
                                           supported by Chrome and Opera */
-                position: fixed;
-                width: 100%;
-                z-index: 100;
+                /*overflow-y: scroll;*/
+                margin-top: 50px;
             }
             .zoekbalk > p{
                 float: right;
@@ -548,7 +553,7 @@ if(empty($_SESSION)){
                 margin-left: 5px;
             }
             .zoekterug{
-                color: white;
+                color: var(--dumpthumb-h1);
                 font-family: dumpertfont;
                 text-transform: uppercase;
                 font-size: 1.3em;
@@ -656,7 +661,13 @@ if(empty($_SESSION)){
                 left: 0;
                 right: 0;
             }
-
+            .imglist{
+                width: auto;
+                height: 150px;
+            }
+            #picframe{
+                overflow-y: scroll;
+            }
 </style>
 <body>
 <div class="notrunning">
@@ -710,8 +721,6 @@ if(empty($_SESSION)){
     </div>
     <div class="versie"></div>
 </div>
-<div class="searchpage" style="display: none">
-</div>
 <div id="nav">
     <div class="navinhoud mainnav">
         <img class="settingstoggle" src="menu.png">
@@ -727,12 +736,15 @@ if(empty($_SESSION)){
         <label class="zoekterug" for="MyInput" style="display:table-cell; width:1px">terug</label>
     </div>
 </div>
+<div id="searchpage" class="searchpage" style="display: none">
+</div>
 <div class="lijst">
 </div>
 <div class="framelist">
         <div id="terug" class="terug">
             <div class="menubar">
-            <i title="Terug naar het menu" class="fas fa-angle-down" style="font-size:26px"></i>
+            <i id="lijstterug" title="Terug naar het menu" class="searchtoggle fas fa-angle-down" style="font-size:26px"></i>
+            <i id="searchterug" title="Terug naar het menu" class="searchtoggle2 fas fa-angle-down" style="font-size:26px; display: none;"></i>
             <img class="info" src="fav.png" width="36px">
             <i id="comtoggle" title="" class='fas fa-comments'></i>
         </div>
@@ -740,6 +752,8 @@ if(empty($_SESSION)){
     <iframe id="vidplayer" src="" width="100%" height="500px" class="fullplayer" allowfullscreen></iframe>
     <div id="picframe" class="dumpertpicplayer hidden">
         <a id="piclink" href="" target="_blank" title="volledige grote"><img id="picplayer" src="" class="hidden"></a>
+        <div class="imageGallery">
+        </div>
     </div>
     <iframe src="" width="100%" height="500px" class="commentpage" style="display: none;"></iframe>
 </div>
@@ -752,23 +766,41 @@ if(empty($_SESSION)){
     var nightmode = "off";
     var thumbtype = '';
     var filter = 'alles';
+    var xsize = 800;
+    var ysize = 1000;
+    var scrolltop = 0;
+    var searchpage = 1;
+    var searchpageupdate = 0;
 
-    var versie = '1.0.5';
+    var versie = '1.0.8';
 
     if(link === "?run"){
-        window.open('index.php?running','Dumpert Notifications','width=400,height=500,resizable=1');
+        window.open('index.php?running','Dumpert Notifications','width=800,height=1000,resizable=1');
     }else if(link === "?running"){
         $('.notrunning').remove();
         $('.wrapper').show();
+        $('#nav').show();
     }else{
         $('.lijst').remove();
         $('#nav').remove();
     }
+
+    $(window).scroll(function () {
+        if($('.lijst').is(":visible")){
+            scrolltop = $(window).scrollTop();
+            if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                alert("bottom!");
+            }
+        }
+    });
+
     function updatefoto(site) {
         $.post("dumpertfotos.php", {'site': site}).done(function (data) {
-            // console.log(data);
+            $('.imageGallery').html(data);
             $('#picplayer').attr('src', data);
             $('#piclink').attr('href', data);
+            // or if using jQuery
+            $('.imageGallery a').simpleLightbox();
         })
     }
     function updatecomment(site) {
@@ -778,9 +810,13 @@ if(empty($_SESSION)){
     }
 
     function search(key) {
-        $.post("search.php", {'filter': key, 'nsfw': nsfw}).done(function (data) {
+        searchpageupdate = 1;
+        $.post("search.php", {'filter': key, 'nsfw': nsfw, 'page': searchpage}).done(function (data) {
+            searchpageupdate = 0;
             $(".searchpage").html(data);
             $('.linkbtn').click(function () {
+                $('#searchterug').show();
+                $('#lijstterug').hide();
                 var id = this.id;
                 var val = $('#link' + id).text();
                 var site = $('#info' + id).text();
@@ -825,9 +861,11 @@ if(empty($_SESSION)){
         if (melding == null){
             melding = '';
         }
-        $.post("dumpertmelding.php", {'filter': filter, 'silent': melding, 'nsfw': nsfw}).done(function (data) {
+        $.post("dumpertmelding2.php", {'filter': filter, 'silent': melding, 'nsfw': nsfw}).done(function (data) {
             $(".lijst").html(data);
             $('.linkbtn').click(function () {
+                $('#searchterug').hide();
+                $('#lijstterug').show();
                 var id = this.id;
                 var val = $('#link' + id).text();
                 var site = $('#info' + id).text();
@@ -871,7 +909,7 @@ if(empty($_SESSION)){
             status = "off";
         }
         $.post("ajax.php", {'status': 'commentToggle', 'val': status});
-        window.open('index.php?running','Dumpert Notifications','width=400,height=500,resizable=1');
+        window.open('index.php?running','Dumpert Notifications','width=800,height=1000,resizable=1');
     }
 
     function popmelding(melding) {
@@ -897,11 +935,28 @@ if(empty($_SESSION)){
     });
 
     $(".fa-angle-down").click(function () {
-        // window.resizeTo(400,480);
+        window.resizeTo(xsize,ysize);
         $('.lijst').show();
         $('.wrapper ').show();
         $('#nav').show();
         $('.framelist').hide();
+        $(window).scrollTop(scrolltop);
+        $('#vidplayer').attr('src', '');
+        $('.commentpage').attr('src', '');
+        $('#picplayer').attr('src', '');
+        $('#piclink').attr('href', '');
+        $('.imageGallery').html('');
+        count = 0;
+    });
+
+    $('#searchterug').click(function () {
+        window.resizeTo(xsize,ysize);
+        $('.lijst').hide();
+        $('.searchpage').show();
+        $('.wrapper ').show();
+        $('#nav').show();
+        $('.framelist').hide();
+        $(window).scrollTop(scrolltop);
         $('#vidplayer').attr('src', '');
         $('.commentpage').attr('src', '');
         $('#picplayer').attr('src', '');
@@ -911,6 +966,7 @@ if(empty($_SESSION)){
 
     $(".zoekterug").click(function () {
         $('.zoekblok').toggle( "slide" );
+        $('.lijst').fadeIn();
         $('.searchpage').fadeToggle();
         setTimeout(function () {
             $('.zoekbar').val('');
@@ -921,18 +977,17 @@ if(empty($_SESSION)){
 
     $(".zoeken ").click(function () {
         $('.zoekblok').toggle( "slide" );
+        $('.lijst').fadeOut();
         $('.searchpage').fadeToggle();
         $('.zoekbar').focus();
     });
 
-    var timer = null;
-    $('.zoekbar').keyup(function(){
-        $('.searchpage').html('');
-        var searchkey = $('.zoekbar').val();
-        clearTimeout(timer);
-        timer = setTimeout(function () {
+    $('.zoekbar').on('keypress',function(e) {
+        if (e.which == 13) {
+            $('.searchpage').html('');
+            var searchkey = $('.zoekbar').val();
             search(searchkey);
-        }, 100)
+        }
     });
 
 
@@ -1091,6 +1146,12 @@ if(empty($_SESSION)){
         });
     });
 
+    $(window).resize(function(){
+        if($('.lijst').is(":visible")){
+            xsize = $(window).width();
+            ysize = $(window).height();
+        }
+    });
 
     $(document).ready(function () {
         $('.versie').html(versie);
@@ -1102,7 +1163,7 @@ if(empty($_SESSION)){
         if ( cookies.length){
             $('.ctabtn').attr("disabled", true);
             $('button[class=ctabtn]').css( 'cursor', 'not-allowed' );
-            
+
             $('.cc_b_ok').on('click', function () {
                 $('.ctabtn').attr("disabled", false);
                 $('button[class=ctabtn]').css( 'cursor', 'pointer' );
@@ -1162,6 +1223,21 @@ if(empty($_SESSION)){
             }
         });
     });
+
+
+
+    $(window).scroll(function () {
+        if($('.searchpage').is(":visible")){
+        if ($(window).scrollTop() + $(window).height() >=
+            $('.searchpage').offset().top + $('.searchpage').height() ) {
+            if(searchpageupdate == 0){
+                searchpage++;
+                var searchkey = $('.zoekbar').val();
+                console.log(searchpage);
+                search(searchkey);
+            }
+        }}
+    })
 
 </script>
 

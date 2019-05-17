@@ -4,6 +4,11 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
 
 $filter = $_POST['filter'];
 $nsfw = $_POST['nsfw'];
+$page = $_POST['page'];
+
+if(empty($filter)){
+    exit;
+}
 
 $headlines = array();
 $links = array();
@@ -17,53 +22,56 @@ $count = 0;
 $dumbthumb = array();
 $dumbtype = array();
 
-$site = 'https://www.dumpert.nl/search/ALL/'. $filter.'/';
+for($x=1;$x<=$page;$x++){
+    $site = 'https://www.dumpert.nl/tag/'. $filter.'/'.$x.'/';
 
 
-$ch=curl_init();
-curl_setopt($ch, CURLOPT_URL, $site);
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($ch, CURLOPT_HEADER, 1);
-curl_setopt($ch, CURLOPT_COOKIE, "nsfw=".$nsfw);
+    $ch=curl_init();
+    curl_setopt($ch, CURLOPT_URL, $site);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_COOKIE, "nsfw=".$nsfw);
 
-$query = curl_exec($ch);
-curl_close($ch);
+    $query = curl_exec($ch);
+    curl_close($ch);
 
-$html = new simple_html_dom();
-$html->load($query);
+    $html = new simple_html_dom();
+    $html->load($query);
 
-foreach($html->find('a[class=dumpthumb]') as $link){
-    $unfiltered = $link->href;
-    $embed[] = str_replace('mediabase', 'embed', $unfiltered);
-    $links[] = $link->href;
-}
+    foreach($html->find('a[class=dumpthumb]') as $link){
+        $unfiltered = $link->href;
+        $embed[] = str_replace('mediabase', 'embed', $unfiltered);
+        $links[] = $link->href;
+    }
 
-foreach($html->find('div.details > h1') as $header) {
-    $headlines[] = $header->plaintext;
-}
+    foreach($html->find('div.details > h1') as $header) {
+        $headlines[] = $header->plaintext;
+    }
 
-foreach($html->find('div.details > date') as $datum) {
-    $date[] = $datum->plaintext;
-}
+    foreach($html->find('div.details > date') as $datum) {
+        $date[] = $datum->plaintext;
+    }
 
-foreach($html->find('a[class=dumpthumb] img') as $image) {
-    $images[] = $image->getAttribute('src');
-}
+    foreach($html->find('a[class=dumpthumb] img') as $image) {
+        $images[] = $image->getAttribute('src');
+    }
 
-foreach($html->find('div.details p.stats') as $stat) {
-    $stats[] = $stat->plaintext;
-}
+    foreach($html->find('div.details p.stats') as $stat) {
+        $stats[] = $stat->plaintext;
+    }
 
-foreach($html->find('div.details > p.description') as $description) {
-    $desc[] = $description->plaintext;
-}
+    foreach($html->find('div.details > p.description') as $description) {
+        $desc[] = $description->plaintext;
+    }
 
-foreach($html->find('a[class=dumpthumb] > span') as $typeof){
-    $dumbtype[] = $typeof->attr['class'];
+    foreach($html->find('a[class=dumpthumb] > span') as $typeof){
+        $dumbtype[] = $typeof->attr['class'];
+    }
+
 }
 
 $jsonarray = json_encode($headlines);
