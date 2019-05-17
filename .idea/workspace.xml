@@ -391,8 +391,8 @@
     <entry file="file://$PROJECT_DIR$/dumpertlijst.json" />
     <entry file="file://$PROJECT_DIR$/instellingen.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="421" column="14" selection-start-line="421" selection-start-column="8" selection-end-line="421" selection-end-column="14" />
+        <state relative-caret-position="425">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -421,8 +421,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../project2/webscrape.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="88" selection-start-line="20" selection-start-column="88" selection-end-line="20" selection-end-column="88" />
+        <state relative-caret-position="-603">
+          <caret line="65" selection-start-line="65" selection-end-line="66" selection-end-column="52" />
         </state>
       </provider>
     </entry>
