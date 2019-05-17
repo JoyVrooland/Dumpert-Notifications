@@ -1,5 +1,5 @@
 <?php
-$files = glob('fotos/*.jpg');
+$files = glob('fotos/*.*');
 foreach($files as $file) {
     unlink($file);
 }

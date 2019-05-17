@@ -12,6 +12,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($ch, CURLOPT_HEADER, 1);
+curl_setopt($ch, CURLOPT_COOKIE, "nsfw=1");
 $query = curl_exec($ch);
 curl_close($ch);
 
@@ -23,12 +25,28 @@ foreach($html->find('img[class=player]') as $link){
 }
 
 for($a = 0; $a < sizeof($fotos); $a++){
-    $foto = explode('/',$fotos[0]);
-    $content = file_get_contents($fotos[$a]);
+    $foto = explode('/',$fotos[$a]);
     $path = 'fotos/'.$foto[4];
-    file_put_contents($path, $content);
+    if (!@getimagesize($path)) {
+        $content = file_get_contents($fotos[$a]);
+        file_put_contents($path, $content);
+    }
+    if(sizeof($fotos) > 1){
+        $nummer = $a + 1;
+//        echo '<a src="'.$path.'"><img src="'.$path.'"></a>';
+        echo '<a href="'.$path.'" title="Nummer '.$nummer.'"><img src="'.$path.'" alt="Nummer '.$nummer.'" class="imglist"/></a>';
+    }
+
 }
-echo $path;
+
+if(sizeof($fotos) > 1){
+    echo "<script>
+            $('#piclink').hide();
+            $('.picplaylist').show();    
+        </script>";
+}else{
+    echo $path;
+}
 
 ?>
 

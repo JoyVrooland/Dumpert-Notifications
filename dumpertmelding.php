@@ -6,9 +6,10 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
     $melding = ($_POST['silent'] != '') ? $_POST['silent'] : '';
     $nsfw = $_POST['nsfw'];
 
+    $array = array();
+
     if($filter === 'alleenfilmpjes'){
         $target = 'json/alleenfilmpjes.json';
-        $array = array();
         $site = 'https://www.dumpert.nl/filmpjes/';
         $data = file_get_contents ("json/alleenfilmpjes.json");
         $json = json_decode($data, true);
@@ -20,7 +21,6 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
         $updateresult = file_put_contents('json/alleenfilmpjes2.json', $updateoud);
     }elseif($filter === 'alleenplaatjes'){
         $target = 'json/alleenplaatjes.json';
-        $array = array();
         $site = 'https://www.dumpert.nl/plaatjes/';
         $data = file_get_contents ("json/alleenplaatjes.json");
         $json = json_decode($data, true);
@@ -32,7 +32,6 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
         $updateresult = file_put_contents('json/alleenplaatjes.json', $updateoud);
     }else{
         $target = 'json/alles.json';
-        $array = array();
         $site = 'https://www.dumpert.nl/';
         $data = file_get_contents ("json/alles.json");
         $json = json_decode($data, true);
@@ -127,7 +126,6 @@ $jsonarray = json_encode($headlines);
                     $content = file_get_contents($images[$a]);
                     $path = 'thumbs/'.$imgname[$a];
                     file_put_contents($path, $content);
-//                copy($images[$a], 'thumbs/'.$a.'.jpg');
                 }
             }
 
@@ -143,7 +141,6 @@ $jsonarray = json_encode($headlines);
                              <p class="description">'.$desc[$x].'</p>
                          </div>
                      </a>';
-//                echo '<a id="'.$x.'" class="linkbtn" href="#">' .$headlines[$x] . "</a><br>";
                     echo '<p class="hidden" id="link'.$x.'">'.$embed[$x].'</p>';
                     echo '<p class="hidden" id="info'.$x.'">'.$links[$x].'</p>';
                 }else{
@@ -157,7 +154,6 @@ $jsonarray = json_encode($headlines);
                              <p class="description">'.$desc[$x].'</p>
                          </div>
                      </a>';
-//                echo '<a id="'.$x.'" class="linkbtn" href="#">' .$headlines[$x] . "</a><br>";
                     echo '<p class="hidden" id="link'.$x.'">'.$embed[$x].'</p>';
                     echo '<p class="hidden" id="info'.$x.'">'.$links[$x].'</p>';
                 }
