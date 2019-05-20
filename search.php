@@ -5,6 +5,7 @@ ini_set('max_execution_time', 300); //300 seconds = 5 minuten
 $filter = $_POST['filter'];
 $nsfw = $_POST['nsfw'];
 $page = $_POST['page'];
+$lastid = $_POST['lastsearchid'];
 
 if(empty($filter)){
     exit;
@@ -22,57 +23,106 @@ $count = 0;
 $dumbthumb = array();
 $dumbtype = array();
 
-for($x=1;$x<=$page;$x++){
-    $site = 'https://www.dumpert.nl/tag/'. $filter.'/'.$x.'/';
+$site = 'https://www.dumpert.nl/tag/'. $filter.'/'.$page.'/';
 
 
-    $ch=curl_init();
-    curl_setopt($ch, CURLOPT_URL, $site);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    curl_setopt($ch, CURLOPT_COOKIE, "nsfw=".$nsfw);
+$ch=curl_init();
+curl_setopt($ch, CURLOPT_URL, $site);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($ch, CURLOPT_HEADER, 1);
+curl_setopt($ch, CURLOPT_COOKIE, "nsfw=".$nsfw);
 
-    $query = curl_exec($ch);
-    curl_close($ch);
+$query = curl_exec($ch);
+curl_close($ch);
 
-    $html = new simple_html_dom();
-    $html->load($query);
+$html = new simple_html_dom();
+$html->load($query);
 
-    foreach($html->find('a[class=dumpthumb]') as $link){
-        $unfiltered = $link->href;
-        $embed[] = str_replace('mediabase', 'embed', $unfiltered);
-        $links[] = $link->href;
-    }
-
-    foreach($html->find('div.details > h1') as $header) {
-        $headlines[] = $header->plaintext;
-    }
-
-    foreach($html->find('div.details > date') as $datum) {
-        $date[] = $datum->plaintext;
-    }
-
-    foreach($html->find('a[class=dumpthumb] img') as $image) {
-        $images[] = $image->getAttribute('src');
-    }
-
-    foreach($html->find('div.details p.stats') as $stat) {
-        $stats[] = $stat->plaintext;
-    }
-
-    foreach($html->find('div.details > p.description') as $description) {
-        $desc[] = $description->plaintext;
-    }
-
-    foreach($html->find('a[class=dumpthumb] > span') as $typeof){
-        $dumbtype[] = $typeof->attr['class'];
-    }
-
+foreach($html->find('a[class=dumpthumb]') as $link){
+    $unfiltered = $link->href;
+    $embed[] = str_replace('mediabase', 'embed', $unfiltered);
+    $links[] = $link->href;
 }
+
+foreach($html->find('div.details > h1') as $header) {
+    $headlines[] = $header->plaintext;
+}
+
+foreach($html->find('div.details > date') as $datum) {
+    $date[] = $datum->plaintext;
+}
+
+foreach($html->find('a[class=dumpthumb] img') as $image) {
+    $images[] = $image->getAttribute('src');
+}
+
+foreach($html->find('div.details p.stats') as $stat) {
+    $stats[] = $stat->plaintext;
+}
+
+foreach($html->find('div.details > p.description') as $description) {
+    $desc[] = $description->plaintext;
+}
+
+foreach($html->find('a[class=dumpthumb] > span') as $typeof){
+    $dumbtype[] = $typeof->attr['class'];
+}
+
+//for($x=1;$x<=$page;$x++){
+//    $site = 'https://www.dumpert.nl/tag/'. $filter.'/'.$x.'/';
+//
+//
+//    $ch=curl_init();
+//    curl_setopt($ch, CURLOPT_URL, $site);
+//    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
+//    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+//    curl_setopt($ch, CURLOPT_HEADER, 1);
+//    curl_setopt($ch, CURLOPT_COOKIE, "nsfw=".$nsfw);
+//
+//    $query = curl_exec($ch);
+//    curl_close($ch);
+//
+//    $html = new simple_html_dom();
+//    $html->load($query);
+//
+//    foreach($html->find('a[class=dumpthumb]') as $link){
+//        $unfiltered = $link->href;
+//        $embed[] = str_replace('mediabase', 'embed', $unfiltered);
+//        $links[] = $link->href;
+//    }
+//
+//    foreach($html->find('div.details > h1') as $header) {
+//        $headlines[] = $header->plaintext;
+//    }
+//
+//    foreach($html->find('div.details > date') as $datum) {
+//        $date[] = $datum->plaintext;
+//    }
+//
+//    foreach($html->find('a[class=dumpthumb] img') as $image) {
+//        $images[] = $image->getAttribute('src');
+//    }
+//
+//    foreach($html->find('div.details p.stats') as $stat) {
+//        $stats[] = $stat->plaintext;
+//    }
+//
+//    foreach($html->find('div.details > p.description') as $description) {
+//        $desc[] = $description->plaintext;
+//    }
+//
+//    foreach($html->find('a[class=dumpthumb] > span') as $typeof){
+//        $dumbtype[] = $typeof->attr['class'];
+//    }
+//
+//}
 
 $jsonarray = json_encode($headlines);
 
@@ -97,7 +147,7 @@ if(sizeof($headlines) > 0) {
 
     for ($x = 0; $x < sizeof($links); $x++) {
         if ($dumbtype[$x] == 'video') {
-            echo '<a id="' . $x . '" href="#" class="dumpthumb linkbtn" title="' . $headlines[$x] . '">
+            echo '<a id="' . $lastid . '" href="#" class="dumpthumb linkbtn" title="' . $headlines[$x] . '">
                          <img src="thumbs/' . $imgname[$x] . '" alt="Sporten blijft slecht voor je" onerror="if (this.src != \'error.png\') this.src = \'error.png\';" width="100" height="100">
                          <span class="video"></span>
                          <div class="details">
@@ -108,10 +158,10 @@ if(sizeof($headlines) > 0) {
                          </div>
                      </a>';
 //                echo '<a id="'.$x.'" class="linkbtn" href="#">' .$headlines[$x] . "</a><br>";
-            echo '<p class="hidden" id="link' . $x . '">' . $embed[$x] . '</p>';
-            echo '<p class="hidden" id="info' . $x . '">' . $links[$x] . '</p>';
+            echo '<p class="hidden" id="link' . $lastid . '">' . $embed[$x] . '</p>';
+            echo '<p class="hidden" id="info' . $lastid . '">' . $links[$x] . '</p>';
         } else {
-            echo '<a id="' . $x . '" href="#" class="dumpthumb linkbtn" title="' . $headlines[$x] . '">
+            echo '<a id="' . $lastid . '" href="#" class="dumpthumb linkbtn" title="' . $headlines[$x] . '">
                          <img src="thumbs/' . $imgname[$x] . '" alt="Sporten blijft slecht voor je" onerror="if (this.src != \'error.png\') this.src = \'error.png\';" width="100" height="100">
                          <span id="thumb' . $x . '" class="foto"></span>
                          <div class="details">
@@ -122,9 +172,10 @@ if(sizeof($headlines) > 0) {
                          </div>
                      </a>';
 //                echo '<a id="'.$x.'" class="linkbtn" href="#">' .$headlines[$x] . "</a><br>";
-            echo '<p class="hidden" id="link' . $x . '">' . $embed[$x] . '</p>';
-            echo '<p class="hidden" id="info' . $x . '">' . $links[$x] . '</p>';
+            echo '<p class="hidden" id="link' . $lastid . '">' . $embed[$x] . '</p>';
+            echo '<p class="hidden" id="info' . $lastid . '">' . $links[$x] . '</p>';
         }
+        $lastid++;
     }
 
 }
