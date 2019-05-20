@@ -794,6 +794,29 @@ if(empty($_SESSION)){
         }
     });
 
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
     function updatefoto(site) {
         $.post("dumpertfotos.php", {'site': site}).done(function (data) {
             $('.imageGallery').html(data);
@@ -901,14 +924,15 @@ if(empty($_SESSION)){
         });
     }
 
+
     function opstarten(){
-        var status = "off";
-        if($( "#toggle" ).hasClass( "on" ) == true){
-            status = "on";
-        }else{
-            status = "off";
-        }
-        $.post("ajax.php", {'status': 'commentToggle', 'val': status});
+        // var status = "off";
+        // if($( "#toggle" ).hasClass( "on" ) == true){
+        //     status = "on";
+        // }else{
+        //     status = "off";
+        // }
+        // $.post("ajax.php", {'status': 'commentToggle', 'val': status});
         window.open('index.php?running','Dumpert Notifications','width=800,height=1000,resizable=1');
     }
 
@@ -990,15 +1014,16 @@ if(empty($_SESSION)){
         }
     });
 
-
     $(".nightmodeknop").click(function () {
         if($("#nightmode").hasClass("on") === true) {
             nightmode = "off";
+            setCookie('nightmode', 0, 60);
             $("#nightmode").attr("class", "radio off");
             $(".nightmodeknop").attr("class", "knopveld off nightmodeknop");
             $("body").attr("class", "");
         } else {
             nightmode = "on";
+            setCookie('nightmode', 1, 60);
             $("#nightmode").attr("class", "radio on");
             $(".nightmodeknop").attr("class", "knopveld on nightmodeknop");
             $("body").attr("class", "nightmode");
@@ -1011,10 +1036,12 @@ if(empty($_SESSION)){
     $(".nsfwknop").click(function () {
         if($("#nsfw").hasClass("on") === true) {
             nsfw = 'deleted';
+            setCookie('nsfw', 'deleted', 60);
             $("#nsfw").attr("class", "radio off");
             $(".nsfwknop").attr("class", "knopveld off nsfwknop");
         } else {
             nsfw = '1';
+            setCookie('nsfw', 1, 60);
             $("#nsfw").attr("class", "radio on");
             $(".nsfwknop").attr("class", "knopveld on nsfwknop");
         }
@@ -1026,6 +1053,7 @@ if(empty($_SESSION)){
     $('.commentsknop').on('click', function () {
         if($('#toggle').hasClass("on") === true) {
             comments = "off";
+            setCookie('comments', 0, 60);
             $('.commentpage').hide();
             $('#toggle').addClass('off').removeClass('on');
             $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
@@ -1035,6 +1063,7 @@ if(empty($_SESSION)){
             $(".commentsknop").attr("class", "knopveld off commentsknop");
         }else {
             comments = "on";
+            setCookie('comments', 1, 60);
             $('.commentpage').show();
             $('#toggle').addClass('on').removeClass('off');
             $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
@@ -1063,6 +1092,7 @@ if(empty($_SESSION)){
     $('#comtoggle').on('click', function () {
         if($('#comtoggle').hasClass("commenton") === true) {
             comments = "off";
+            setCookie('comments', 0, 60);
             $('.commentpage').hide();
             $('#toggle').addClass('off').removeClass('on');
             $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
@@ -1073,6 +1103,7 @@ if(empty($_SESSION)){
             window.resizeTo(800,500);
         }else {
             comments = "on";
+            setCookie('comments', 1, 60);
             $('.commentpage').show();
             $('#toggle').addClass('on').removeClass('off');
             $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
@@ -1081,9 +1112,8 @@ if(empty($_SESSION)){
             $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
             $(".commentsknop").attr("class", "knopveld on commentsknop");
             window.resizeTo(800,935);
-
         }
-        $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
+        // $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
     });
     //filter sectie
 
@@ -1092,59 +1122,61 @@ if(empty($_SESSION)){
         $("#alleenfilmpjes").attr("class", "knopveld off");
         $("#alleenplaatjes").attr("class", "knopveld off");
         filter = 'alles';
-        $.post("ajax.php", {'status': 'filterradio', 'val': filter}).done(function () {
-            updatelist('silent');
-        });
+        setCookie('filter', 'alles', 60);
+        // $.post("ajax.php", {'status': 'filterradio', 'val': filter}).done(function () {
+        //     updatelist('silent');
+        // });
     });
     $('#alleenfilmpjes').click(function () {
         $("#alleenfilmpjes").attr("class", "knopveld on");
         $("#alles").attr("class", "knopveld off");
         $("#alleenplaatjes").attr("class", "knopveld off");
         filter = 'alleenfilmpjes';
-        $.post("ajax.php", {'status': 'filterradio', 'val': filter}).done(function () {
-            updatelist('silent');
-        });
+        setCookie('filter', 'alleenfilmpjes', 60);
+        // $.post("ajax.php", {'status': 'filterradio', 'val': filter}).done(function () {
+        //     updatelist('silent');
+        // });
     });
     $('#alleenplaatjes').click(function () {
         $("#alleenplaatjes").attr("class", "knopveld on");
         $("#alleenfilmpjes").attr("class", "knopveld off");
         $("#alles").attr("class", "knopveld off");
         filter = 'alleenplaatjes';
-        $.post("ajax.php", {'status': 'filterradio', 'val': filter}).done(function () {
-            updatelist('silent');
-        });
+        setCookie('filter', 'alleenplaatjes', 60);
+        // $.post("ajax.php", {'status': 'filterradio', 'val': filter}).done(function () {
+        //     updatelist('silent');
+        // });
     });
 
     $(document).ready(function () {
-        $.post("ajax.php", {'status': 'checkFilterState'}).done(function (data) {
-            if(data == "alles") {
+        filterdata = getCookie('filter');
+            if(filterdata == "alles") {
                 filter = "alles";
                 $("#alles").attr("class", "knopveld on");
                 $("#alleenfilmpjes").attr("class", "knopveld off");
                 $("#alleenplaatjes").attr("class", "knopveld off");
-                $.post("ajax.php", {'status': 'filterradio', 'val': filter});
+                // $.post("ajax.php", {'status': 'filterradio', 'val': filter});
                 updatelist('silent');
             }
-            else if(data == "alleenfilmpjes") {
+            else if(filterdata == "alleenfilmpjes") {
                 filter = "alleenfilmpjes";
                 $("#alleenfilmpjes").attr("class", "knopveld on");
                 $("#alles").attr("class", "knopveld off");
                 $("#alleenplaatjes").attr("class", "knopveld off");
-                $.post("ajax.php", {'status': 'filterradio', 'val': filter});
+                // $.post("ajax.php", {'status': 'filterradio', 'val': filter});
                 updatelist('silent');
             }
-            else if(data == "alleenplaatjes") {
+            else if(filterdata == "alleenplaatjes") {
                 filter = "alleenplaatjes";
                 $("#alleenplaatjes").attr("class", "knopveld on");
                 $("#alleenfilmpjes").attr("class", "knopveld off");
                 $("#alles").attr("class", "knopveld off");
-                $.post("ajax.php", {'status': 'filterradio', 'val': filter});
+                // $.post("ajax.php", {'status': 'filterradio', 'val': filter});
                 updatelist('silent');
             }else{
                 filter = "alleen";
             }
         });
-    });
 
     $(window).resize(function(){
         if($('.lijst').is(":visible")){
@@ -1171,8 +1203,9 @@ if(empty($_SESSION)){
         }
 
         setTimeout(function () {
-            $.post("ajax.php", {'status': 'checkToggleState'}).done(function (data) {
-                if(data == "on") {
+            // $.post("ajax.php", {'status': 'checkToggleState'}).done(function (data) {
+                commentdata = getCookie('comments');
+                if(commentdata == 1) {
                     comments = "on";
                     $("#toggle").attr("class", "radio on");
                     $('.commentpage').show();
@@ -1191,40 +1224,61 @@ if(empty($_SESSION)){
                     $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
                     $(".commentsknop").attr("class", "knopveld off commentsknop");
                 }
-            });
         }, 250);
-        $.post("ajax.php", {'status': 'checkNightmodeState'}).done(function (data) {
-            if(data == "on") {
-                nightmode = "on";
-                $(".settingstoggle").toggle();
-                $("#nightmode").attr("class", "radio on");
-                $(".nightmodeknop").attr("class", "knopveld on nightmodeknop");
-                $("body").attr("class", "notrans nightmode");
-                setTimeout(function () {
-                    $("body").attr("class", "nightmode");
-                },500)
-            } else {
-                nightmode = "off";
-                $("#nightmode").attr("class", "radio off");
-                $(".nightmodeknop").attr("class", "knopveld off nightmodeknop");
-                $("body").attr("class", "");
-            }
-        });
+        if(getCookie('nightmode') == 1){
+            nightmode = "on";
+            $(".settingstoggle").toggle();
+            $("#nightmode").attr("class", "radio on");
+            $(".nightmodeknop").attr("class", "knopveld on nightmodeknop");
+            $("body").attr("class", "notrans nightmode");
+            setTimeout(function () {
+                $("body").attr("class", "nightmode");
+            },500)
+        }else{
+            nightmode = "off";
+            $("#nightmode").attr("class", "radio off");
+            $(".nightmodeknop").attr("class", "knopveld off nightmodeknop");
+            $("body").attr("class", "");
+        }
+        // $.post("ajax.php", {'status': 'checkNightmodeState'}).done(function (data) {
+        //     if(data == "on") {
+        //         nightmode = "on";
+        //         $(".settingstoggle").toggle();
+        //         $("#nightmode").attr("class", "radio on");
+        //         $(".nightmodeknop").attr("class", "knopveld on nightmodeknop");
+        //         $("body").attr("class", "notrans nightmode");
+        //         setTimeout(function () {
+        //             $("body").attr("class", "nightmode");
+        //         },500)
+        //     } else {
+        //         nightmode = "off";
+        //         $("#nightmode").attr("class", "radio off");
+        //         $(".nightmodeknop").attr("class", "knopveld off nightmodeknop");
+        //         $("body").attr("class", "");
+        //     }
+        // });
 
-        $.post("ajax.php", {'status': 'checkNsfwState'}).done(function (data) {
-            if(data == 1) {
-                nsfw = "1";
-                $("#nsfw").attr("class", "radio on");
-                $(".nsfwknop").attr("class", "knopveld on nsfwknop");
-            } else {
-                nsfw = "deleted";
-                $("#nsfw").attr("class", "radio off");
-                $(".nsfwknop").attr("class", "knopveld off nsfwknop");
-            }
-        });
+        if(getCookie('nsfw') == 1){
+            nsfw = "1";
+            $("#nsfw").attr("class", "radio on");
+            $(".nsfwknop").attr("class", "knopveld on nsfwknop");
+        }else{
+            nsfw = "deleted";
+            $("#nsfw").attr("class", "radio off");
+            $(".nsfwknop").attr("class", "knopveld off nsfwknop");
+        }
+        // $.post("ajax.php", {'status': 'checkNsfwState'}).done(function (data) {
+        //     if(data == 1) {
+        //         nsfw = "1";
+        //         $("#nsfw").attr("class", "radio on");
+        //         $(".nsfwknop").attr("class", "knopveld on nsfwknop");
+        //     } else {
+        //         nsfw = "deleted";
+        //         $("#nsfw").attr("class", "radio off");
+        //         $(".nsfwknop").attr("class", "knopveld off nsfwknop");
+        //     }
+        // });
     });
-
-
 
     $(window).scroll(function () {
         if($('.searchpage').is(":visible")){
@@ -1237,7 +1291,7 @@ if(empty($_SESSION)){
                 search(searchkey);
             }
         }}
-    })
+    });
 
 </script>
 
