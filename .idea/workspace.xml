@@ -4,6 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/index.php" description="&lt;script type=&quot;text/javascript&quot; src=&quot;//www.PrivacyP..." line="95" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="10c46082-f12c-40a9-91f1-e46980484490" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fotos/4d6f9119_Vrijmibo00001.jpg.jpg" beforeDir="false" />
@@ -32,6 +33,9 @@
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/search.php" afterDir="false" />
     </list>
+=======
+    <list default="true" id="10c46082-f12c-40a9-91f1-e46980484490" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +70,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="519">
               <caret line="1079" column="14" lean-forward="true" selection-start-line="1079" selection-start-column="14" selection-end-line="1079" selection-end-column="14" />
               <folding>
@@ -74,6 +79,10 @@
                 <element signature="e#44156#45157#0#HTML" />
                 <element signature="e#45450#45472#0#HTML" />
               </folding>
+=======
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+>>>>>>> Stashed changes
             </state>
           </provider>
         </entry>
@@ -255,6 +264,7 @@
       <workItem from="1557936415662" duration="12080000" />
       <workItem from="1557989846849" duration="11915000" />
       <workItem from="1558076368089" duration="18632000" />
+<<<<<<< Updated upstream
       <workItem from="1558110860292" duration="3599000" />
       <workItem from="1558116008640" duration="5752000" />
       <workItem from="1558173229512" duration="331000" />
@@ -262,11 +272,18 @@
       <workItem from="1558279609373" duration="2720000" />
       <workItem from="1558349226182" duration="9941000" />
       <workItem from="1558374985712" duration="8011000" />
+=======
+      <workItem from="1558282728842" duration="42000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="152146000" />
+=======
+    <option name="totallyTimeSpent" value="121235000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
@@ -450,6 +467,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="519">
           <caret line="1079" column="14" lean-forward="true" selection-start-line="1079" selection-start-column="14" selection-end-line="1079" selection-end-column="14" />
           <folding>
@@ -458,6 +476,10 @@
             <element signature="e#44156#45157#0#HTML" />
             <element signature="e#45450#45472#0#HTML" />
           </folding>
+=======
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+>>>>>>> Stashed changes
         </state>
       </provider>
     </entry>

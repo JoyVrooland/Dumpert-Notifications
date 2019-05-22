@@ -7,7 +7,7 @@ $nsfw = $_POST['nsfw'];
 $page = $_POST['page'];
 $lastid = $_POST['lastsearchid'];
 
-if(empty($filter)){
+if (empty($filter)) {
     exit;
 }
 
@@ -23,10 +23,10 @@ $count = 0;
 $dumbthumb = array();
 $dumbtype = array();
 
-$site = 'https://www.dumpert.nl/tag/'. $filter.'/'.$page.'/';
+$site = 'https://www.dumpert.nl/tag/' . $filter . '/' . $page . '/';
 
 
-$ch=curl_init();
+$ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $site);
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -34,7 +34,7 @@ curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 curl_setopt($ch, CURLOPT_HEADER, 1);
-curl_setopt($ch, CURLOPT_COOKIE, "nsfw=".$nsfw);
+curl_setopt($ch, CURLOPT_COOKIE, "nsfw=" . $nsfw);
 
 $query = curl_exec($ch);
 curl_close($ch);
@@ -42,91 +42,39 @@ curl_close($ch);
 $html = new simple_html_dom();
 $html->load($query);
 
-foreach($html->find('a[class=dumpthumb]') as $link){
+foreach ($html->find('a[class=dumpthumb]') as $link) {
     $unfiltered = $link->href;
     $embed[] = str_replace('mediabase', 'embed', $unfiltered);
     $links[] = $link->href;
 }
 
-foreach($html->find('div.details > h1') as $header) {
+foreach ($html->find('div.details > h1') as $header) {
     $headlines[] = $header->plaintext;
 }
 
-foreach($html->find('div.details > date') as $datum) {
+foreach ($html->find('div.details > date') as $datum) {
     $date[] = $datum->plaintext;
 }
 
-foreach($html->find('a[class=dumpthumb] img') as $image) {
+foreach ($html->find('a[class=dumpthumb] img') as $image) {
     $images[] = $image->getAttribute('src');
 }
 
-foreach($html->find('div.details p.stats') as $stat) {
+foreach ($html->find('div.details p.stats') as $stat) {
     $stats[] = $stat->plaintext;
 }
 
-foreach($html->find('div.details > p.description') as $description) {
+foreach ($html->find('div.details > p.description') as $description) {
     $desc[] = $description->plaintext;
 }
 
-foreach($html->find('a[class=dumpthumb] > span') as $typeof){
+foreach ($html->find('a[class=dumpthumb] > span') as $typeof) {
     $dumbtype[] = $typeof->attr['class'];
 }
 
-//for($x=1;$x<=$page;$x++){
-//    $site = 'https://www.dumpert.nl/tag/'. $filter.'/'.$x.'/';
-//
-//
-//    $ch=curl_init();
-//    curl_setopt($ch, CURLOPT_URL, $site);
-//    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0');
-//    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-//    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-//    curl_setopt($ch, CURLOPT_HEADER, 1);
-//    curl_setopt($ch, CURLOPT_COOKIE, "nsfw=".$nsfw);
-//
-//    $query = curl_exec($ch);
-//    curl_close($ch);
-//
-//    $html = new simple_html_dom();
-//    $html->load($query);
-//
-//    foreach($html->find('a[class=dumpthumb]') as $link){
-//        $unfiltered = $link->href;
-//        $embed[] = str_replace('mediabase', 'embed', $unfiltered);
-//        $links[] = $link->href;
-//    }
-//
-//    foreach($html->find('div.details > h1') as $header) {
-//        $headlines[] = $header->plaintext;
-//    }
-//
-//    foreach($html->find('div.details > date') as $datum) {
-//        $date[] = $datum->plaintext;
-//    }
-//
-//    foreach($html->find('a[class=dumpthumb] img') as $image) {
-//        $images[] = $image->getAttribute('src');
-//    }
-//
-//    foreach($html->find('div.details p.stats') as $stat) {
-//        $stats[] = $stat->plaintext;
-//    }
-//
-//    foreach($html->find('div.details > p.description') as $description) {
-//        $desc[] = $description->plaintext;
-//    }
-//
-//    foreach($html->find('a[class=dumpthumb] > span') as $typeof){
-//        $dumbtype[] = $typeof->attr['class'];
-//    }
-//
-//}
-
 $jsonarray = json_encode($headlines);
 
-if(sizeof($headlines) > 0) {
+if (sizeof($headlines) > 0) {
 
     for ($y = 0; $y < sizeof($images); $y++) {
         $picturename = $images[$y];
@@ -135,9 +83,9 @@ if(sizeof($headlines) > 0) {
         $picturename = explode('/', $picturename);
         $imgname[] = $picturename[2];
     }
-    for($a = 0; $a < sizeof($images); $a++){
+    for ($a = 0; $a < sizeof($images); $a++) {
         $content = file_get_contents($images[$a]);
-        $path = 'thumbs/'.$imgname[$a];
+        $path = 'thumbs/' . $imgname[$a];
         if (!@getimagesize($path)) {
             file_put_contents($path, $content);
         }
@@ -149,7 +97,7 @@ if(sizeof($headlines) > 0) {
         if ($dumbtype[$x] == 'video') {
             echo '<a id="' . $lastid . '" href="#" class="dumpthumb linkbtn" title="' . $headlines[$x] . '">
                          <img src="thumbs/' . $imgname[$x] . '" alt="Sporten blijft slecht voor je" onerror="if (this.src != \'error.png\') this.src = \'error.png\';" width="100" height="100">
-                         <span class="video"></span>
+                         <span id="thumb' . $lastid . '" class="video"></span>
                          <div class="details">
                              <h1>' . $headlines[$x] . '</h1>
                              <date>' . $date[$x] . '</date>
@@ -163,7 +111,7 @@ if(sizeof($headlines) > 0) {
         } else {
             echo '<a id="' . $lastid . '" href="#" class="dumpthumb linkbtn" title="' . $headlines[$x] . '">
                          <img src="thumbs/' . $imgname[$x] . '" alt="Sporten blijft slecht voor je" onerror="if (this.src != \'error.png\') this.src = \'error.png\';" width="100" height="100">
-                         <span id="thumb' . $x . '" class="foto"></span>
+                         <span id="thumb' . $lastid . '" class="foto"></span>
                          <div class="details">
                              <h1>' . $headlines[$x] . '</h1>
                              <date>' . $date[$x] . '</date>

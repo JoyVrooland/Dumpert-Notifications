@@ -1,5 +1,5 @@
 <?php session_start();
-if(empty($_SESSION)){
+if (empty($_SESSION)) {
     $_SESSION['nsfw'] = "deleted";
 }
 ?>
@@ -7,34 +7,49 @@ if(empty($_SESSION)){
 <html>
 <head>
     <title>dumpert melding scraper</title>
-    <link rel="shortcut icon" href="https://cdn.freebiesupply.com/logos/large/2x/dumpert-logo-png-transparent.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="https://cdn.freebiesupply.com/logos/large/2x/dumpert-logo-png-transparent.png"
+          type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+          integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/1.17.1/simple-lightbox.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/1.17.1/simplelightbox.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/1.17.1/simplelightbox.css"/>
     <script src="push.js"></script>
 </head>
 <!-- Cookie Consent by https://PrivacyPolicies.com -->
 <script type="text/javascript" src="//www.PrivacyPolicies.com/cookie-consent/releases/3.0.0/cookie-consent.js"></script>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
-        cookieconsent.run({"notice_banner_type":"headline","consent_type":"implied","palette":"light","change_preferences_selector":"#changePreferences","language":"en","website_name":"Dumpert Notifications"});
+        cookieconsent.run({
+            "notice_banner_type": "headline",
+            "consent_type": "implied",
+            "palette": "light",
+            "change_preferences_selector": "#changePreferences",
+            "language": "en",
+            "website_name": "Dumpert Notifications"
+        });
     });
 </script>
 
-<noscript><a href="https://www.privacypolicies.com/cookie-consent/">Cookie Consent by Privacy Policies Generator</a></noscript>
+<noscript><a href="https://www.privacypolicies.com/cookie-consent/">Cookie Consent by Privacy Policies Generator</a>
+</noscript>
 <!-- End Cookie Consent -->
 
 <style>
-    :root{
+    :root {
         --main-bg-color: #ffffff;
         --dumpthumb: #272727;
         --dumpthumb-font: #8f8f8f;
@@ -47,7 +62,8 @@ if(empty($_SESSION)){
         --radio-background2: #5bcf24;
         --search-bg: #ededed;
     }
-    .nightmode{
+
+    .nightmode {
         --main-bg-color: #191919;
         --dumpthumb: #272727;
         --dumpthumb-font: #8f8f8f;
@@ -60,15 +76,18 @@ if(empty($_SESSION)){
         --radio-background2: #3a889a;
         --search-bg: #191919;
     }
-    .notrans{
+
+    .notrans {
         -webkit-transition: all 0s linear;
         -moz-transition: all 0s linear;
         -o-transition: all 0s linear;
         transition: all 0s linear;
     }
-    .lijst{
+
+    .lijst {
         margin-top: 50px;
     }
+
     @font-face {
         font-family: dumpertfont;
         src: url(fonts/Nimbus-Sans-D-OT-Black_32742.ttf);
@@ -79,7 +98,8 @@ if(empty($_SESSION)){
         src: url(fonts/NimbusSanL-Bol.otf);
         font-weight: bold;
     }
-    body{
+
+    body {
         background-color: var(--main-bg-color);
         margin-top: -10px;
         padding-top: 10px;
@@ -88,76 +108,101 @@ if(empty($_SESSION)){
         -o-transition: all .2s linear;
         transition: all .2s linear;
     }
+
     .fullplayer {
         position: fixed;
         background: #000;
         border: none;
-        top: 0; right: 0;
-        bottom: 0; left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         z-index: -1;
     }
-    .commentpage{
+
+    .commentpage {
         position: fixed;
         background: #fff;
         border: none;
         right: 0;
-        bottom: 0; left: 0;
+        bottom: 0;
+        left: 0;
         width: 100%;
         height: 50%;
         z-index: -1;
     }
-    .dumpertembed{
+
+    .dumpertembed {
         position: fixed;
         background: #000;
         border: none;
-        top: 0; right: 0;
-        bottom: 0; left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         width: 100%;
         height: 50%;
         z-index: -1;
     }
-    .dumpertpicplayer{
+
+    .dumpertpicplayer {
         display: table-cell;
-        vertical-align:middle;
+        vertical-align: middle;
         background: #000;
         border: none;
-        top: 0; right: 0;
-        bottom: 0; left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         height: 50%;
         z-index: -1;
         position: fixed;
         /*overflow-y: hidden !important;*/
     }
-    .dumpertpicplayerfull{
+
+    .dumpertpicplayerfull {
         display: table-cell;
-        vertical-align:middle;
+        vertical-align: middle;
         background: #000;
         border: none;
-        top: 0; right: 0;
-        bottom: 0; left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         height: 100%;
         z-index: -1;
         position: fixed;
         /*overflow-y: hidden !important;*/
     }
-    #picplayer{
+
+    #picplayer {
         margin: 0px auto;
         display: flex;
         justify-content: center;
         height: 100%;
     }
-    .hidden{
+
+    .hidden {
         display: none;
     }
-    .framelist{
+
+    .framelist {
         display: none;
+        position: relative;
+        z-index: 1000;
     }
-    #terug{
+
+    #terug {
         cursor: pointer;
+        opacity: 1;
+        z-index: 9999;
+        position: fixed;
+        display: block;
     }
-    .terugfull{
+
+    .terugfull {
         width: 91px;
         height: 30px;
         position: absolute;
@@ -167,7 +212,8 @@ if(empty($_SESSION)){
         color: white;
         display: none;
     }
-    .terugsplit{
+
+    .terugsplit {
         width: 91px;
         height: 30px;
         position: absolute;
@@ -177,6 +223,7 @@ if(empty($_SESSION)){
         color: white;
         display: none;
     }
+
     .terug {
         cursor: pointer;
         -webkit-touch-callout: none; /* iOS Safari */
@@ -184,10 +231,12 @@ if(empty($_SESSION)){
         -html-user-select: none; /* Konqueror HTML */
         -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
-        user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+        user-select: none;
+        /* Non-prefixed version, currently
+                                         supported by Chrome and Opera */
     }
-    .info{
+
+    .info {
         position: relative;
         bottom: 5px;
         margin-left: 10px;
@@ -195,7 +244,8 @@ if(empty($_SESSION)){
         width: 20px;
         cursor: pointer;
     }
-    .fa-comments{
+
+    .fa-comments {
         position: relative;
         bottom: 2px;
         margin-left: 10px;
@@ -206,7 +256,7 @@ if(empty($_SESSION)){
         text-shadow: 0px 1px 3px #272634;
     }
 
-    .fas fa-angle-down{
+    .fas fa-angle-down {
         position: relative;
         bottom: 2px;
         margin-left: 10px;
@@ -227,9 +277,11 @@ if(empty($_SESSION)){
         max-height: 100px;
         overflow: hidden;
     }
+
     a.dumpthumb:hover {
         border: 1px solid #66c221;
     }
+
     a.dumpthumb img {
         position: absolute;
         left: 9px;
@@ -250,6 +302,7 @@ if(empty($_SESSION)){
         color: #000;
         text-decoration: none;
     }
+
     a.dumpthumb .details h1 {
         margin-bottom: 3px;
         font-size: 1.3em;
@@ -258,26 +311,32 @@ if(empty($_SESSION)){
         overflow: hidden;
         color: var(--dumpthumb-h1);
     }
+
     a.dumpthumb .details date, a.dumpthumb .details .stats {
         font-size: 1em;
         color: var(--dumpthumb-font);
         z-index: 10000
     }
+
     a.dumpthumb span.video {
         background-position: -184px -38px;
     }
+
     a.dumpthumb p {
         margin: 0;
     }
+
     a.dumpthumb .details .description {
         margin-top: 3px;
         font-size: 1.2em;
         color: var(--dumpthumb-disc);
     }
+
     a.dumpthumb .details date, a.dumpthumb .details .stats {
         font-size: 1em;
         color: #8f8f8f;
     }
+
     a.dumpthumb span.foto, a.dumpthumb span.video {
         position: absolute;
         display: block;
@@ -290,15 +349,17 @@ if(empty($_SESSION)){
         background-position: -129px -38px;
         opacity: 0.5;
     }
+
     a.dumpthumb span.video {
         background-position: -184px -38px;
     }
+
     .allsprites-sprite, a.dumpthumb span.foto, a.dumpthumb span.video, .header .dump-lgo, .header .dump-srv .nsfw, .header .dump-srv .nsfw.on, .pagination li a span, .pagination li.volgende a span, .dump-mail, .dump-embed, .dump-enhance, .dump-mut a, .dump-mut .dump-bad, .dump-wgt > a > .dump-amt:before, .dump-wgt .dump-tweet > span:first-child:before, .dump-wgt .dump-like > span:first-child:before, .dump-wgt .dump-share > span:first-child:before, #comments article footer .baby, #comments article footer a.modmark, #comments article footer a.modmark:hover, #comments article footer a.modmark.m, #comments article footer a.modmark.m:hover, #comments article footer .nsb, #comments article footer .nsb:hover, .mob-headlines li.gs .logo, .mob-headlines li.dk .logo, .mob-headlines li.uc .logo, .mob-headlines li.ab .logo, .dump-mnu, .mobnav .dump-vid span, .mobnav .dump-img span, .mobnav .dump-top span, .mobnav .dump-themas span, .mobnav .dump-view span, .mobnav .dump-dump span, .dump-soc .dump-app .dump-fb, .dump-soc .dump-app .dump-tw, .dump-soc .dump-app .dump-send, .dump-soc .dump-app .dump-wa {
         background-image: url(allsprites-s6c30d074dd.png);
         background-repeat: no-repeat;
     }
 
-    #nav{
+    #nav {
         position: fixed;
         z-index: 100;
         background: var(--main-bg-color);
@@ -309,33 +370,39 @@ if(empty($_SESSION)){
         /*transition: all .22s linear;*/
         text-align: center;
         height: 48px;
-        display:none;
+        display: none;
     }
-    #nav > .navinhoud > img{
+
+    #nav > .navinhoud > img {
         float: left;
         width: 40px;
         margin: 5px;
         cursor: pointer;
         margin-right: -45px;
     }
-    #nav > .navinhoud > p{
+
+    #nav > .navinhoud > p {
         font-size: 2em;
         text-transform: uppercase;
         font-family: dumpertfont;
         color: var(--dumpthumb-h1);
     }
-    .mainnav{
+
+    .mainnav {
         box-shadow: var(--main-bg-color) 0px -13px 9px 20px;
     }
-    .navinhoud{
+
+    .navinhoud {
         background: var(--main-bg-color);
         height: 40px;
     }
-    .content{
-        margin:0 auto;
+
+    .content {
+        margin: 0 auto;
         width: 300px;
         margin-top: 80px;
     }
+
     .ctabtn {
         margin-top: 25px;
         background-color: #2ecc71;
@@ -348,12 +415,15 @@ if(empty($_SESSION)){
         margin-top: 40px;
         font-size: 24px;
     }
-    .ctabtn:hover{
+
+    .ctabtn:hover {
         background-color: #27ae60;
     }
+
     ::-webkit-scrollbar {
         display: none;
     }
+
     .wrapper {
         height: 22px;
         width: 370px;
@@ -361,115 +431,125 @@ if(empty($_SESSION)){
         margin-top: 10px;
         margin-bottom: 6px;
     }
+
     .labelnight {
         margin-left: 15px !important;
     }
+
     .label {
-        display:inline-block;
-        position:relative;
-        top:-6px;
-        height:20px;
-        padding:0;
-        margin:0 5px 0 0;
-        margin-right:5px;
+        display: inline-block;
+        position: relative;
+        top: -6px;
+        height: 20px;
+        padding: 0;
+        margin: 0 5px 0 0;
+        margin-right: 5px;
         color: var(--toggle-font-color);
         font-weight: bold;
     }
+
     .radio {
-        display:inline-block;
-        width:43px;
-        height:20px;
-        border-radius:10px;
+        display: inline-block;
+        width: 43px;
+        height: 20px;
+        border-radius: 10px;
         position: relative;
         zoom: 1.4;
         -moz-transform: scale(1.4);
         margin-top: -1px;
     }
+
     .radio .icon {
-        display:inline-block;
-        position:absolute;
-        width:16px;
-        height:16px;
-        top:2px;
-        color:#ffffff;
-        text-shadow:0 1px 0 rgba(0,0,0,0.3);
+        display: inline-block;
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 2px;
+        color: #ffffff;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
     }
 
     .radio .switch {
-        display:block;
-        height:20px;
-        width:20px;
-        border-radius:10px;
-        border:1px solid #848b83;
-        position:relative;
-        top:-1px;
+        display: block;
+        height: 20px;
+        width: 20px;
+        border-radius: 10px;
+        border: 1px solid #848b83;
+        position: relative;
+        top: -1px;
         background: #f4f4f4; /* Old browsers */
-        background: -moz-linear-gradient(top,  #f4f4f4 0%, #ebebeb 100%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(100%,#ebebeb)); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top,  #f4f4f4 0%,#ebebeb 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(top,  #f4f4f4 0%,#ebebeb 100%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(top,  #f4f4f4 0%,#ebebeb 100%); /* IE10+ */
-        background: linear-gradient(top,  #f4f4f4 0%,#ebebeb 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr ='#f4f4f4', endColorstr='#ebebeb',GradientType=0 ); /* IE6-9 */
+        background: -moz-linear-gradient(top, #f4f4f4 0%, #ebebeb 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f4f4f4), color-stop(100%, #ebebeb)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #f4f4f4 0%, #ebebeb 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #f4f4f4 0%, #ebebeb 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #f4f4f4 0%, #ebebeb 100%); /* IE10+ */
+        background: linear-gradient(top, #f4f4f4 0%, #ebebeb 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4f4f4', endColorstr='#ebebeb', GradientType=0); /* IE6-9 */
         -webkit-transition: left 150ms ease;
         -moz-transition: left 150ms ease;
         -ms-transition: left 150ms ease;
         -o-transition: left 150ms ease;
         transition: left 150ms ease;
     }
+
     .radio:hover {
-        cursor:pointer;
-    }
-    .radio .switch:after {
-        /*content:"";*/
-        display:block;
-        position: relative;
-        width:10px;
-        height:10px;
-        border-radius:5px;
-        top:5px;
-        left:5px;
-        background: #8e8e8e; /* Old browsers */
-        background: -moz-linear-gradient(top,  #8e8e8e 0%, #bcbcbc 100%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8e8e8e), color-stop(100%,#bcbcbc)); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top,  #8e8e8e 0%,#bcbcbc 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(top,  #8e8e8e 0%,#bcbcbc 100%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(top,  #8e8e8e 0%,#bcbcbc 100%); /* IE10+ */
-        background: linear-gradient(top,  #8e8e8e 0%,#bcbcbc 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e8e8e', endColorstr='#bcbcbc',GradientType=0 ); /* IE6-9 */
-        -webkit-box-shadow:0 1px 0 #ffffff;
-        box-shadow:0 1px 0 #ffffff;
-    }
-    .radio.on {
-        border:1px solid #168d09;
-        background: var(--radio-background); /* Old browsers */
-        background: -moz-linear-gradient(top, #168d09 0%, #5bcf24 100%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#168d09), color-stop(100%,#5bcf24)); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top, #168d09 0%,#5bcf24 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(top, #168d09 0%,#5bcf24 100%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(top, #168d09 0%,#5bcf24 100%); /* IE10+ */
-        background: linear-gradient(top, #168d09 0%,#5bcf24 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#168d09', endColorstr='#5bcf24',GradientType=0 ); /* IE6-9 */
-    }
-    .radio.on .switch {
-        left:25px;
-    }
-    .radio.off {
-        border:1px solid #989898;
-        background: #8a8a8a; /* Old browsers */
-        background: -moz-linear-gradient(top,  #8a8a8a 0%, #7C7C7C 100%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8a8a8a), color-stop(100%,#7C7C7C)); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top,  #8a8a8a 0%,#7C7C7C 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(top,  #8a8a8a 0%,#7C7C7C 100%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(top,  #8a8a8a 0%,#7C7C7C 100%); /* IE10+ */
-        background: linear-gradient(top,  #8a8a8a 0%,#7C7C7C 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a8a8a', endColorstr='#7C7C7C',GradientType=0 ); /* IE6-9 */
-    }
-    .radio.off .switch {
-        left:-2px;
+        cursor: pointer;
     }
 
-    .version{
+    .radio .switch:after {
+        /*content:"";*/
+        display: block;
+        position: relative;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        top: 5px;
+        left: 5px;
+        background: #8e8e8e; /* Old browsers */
+        background: -moz-linear-gradient(top, #8e8e8e 0%, #bcbcbc 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8e8e8e), color-stop(100%, #bcbcbc)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #8e8e8e 0%, #bcbcbc 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #8e8e8e 0%, #bcbcbc 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #8e8e8e 0%, #bcbcbc 100%); /* IE10+ */
+        background: linear-gradient(top, #8e8e8e 0%, #bcbcbc 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8e8e8e', endColorstr='#bcbcbc', GradientType=0); /* IE6-9 */
+        -webkit-box-shadow: 0 1px 0 #ffffff;
+        box-shadow: 0 1px 0 #ffffff;
+    }
+
+    .radio.on {
+        border: 1px solid #168d09;
+        background: var(--radio-background); /* Old browsers */
+        background: -moz-linear-gradient(top, #168d09 0%, #5bcf24 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #168d09), color-stop(100%, #5bcf24)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #168d09 0%, #5bcf24 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #168d09 0%, #5bcf24 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #168d09 0%, #5bcf24 100%); /* IE10+ */
+        background: linear-gradient(top, #168d09 0%, #5bcf24 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#168d09', endColorstr='#5bcf24', GradientType=0); /* IE6-9 */
+    }
+
+    .radio.on .switch {
+        left: 25px;
+    }
+
+    .radio.off {
+        border: 1px solid #989898;
+        background: #8a8a8a; /* Old browsers */
+        background: -moz-linear-gradient(top, #8a8a8a 0%, #7C7C7C 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8a8a8a), color-stop(100%, #7C7C7C)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #8a8a8a 0%, #7C7C7C 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #8a8a8a 0%, #7C7C7C 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #8a8a8a 0%, #7C7C7C 100%); /* IE10+ */
+        background: linear-gradient(top, #8a8a8a 0%, #7C7C7C 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8a8a8a', endColorstr='#7C7C7C', GradientType=0); /* IE6-9 */
+    }
+
+    .radio.off .switch {
+        left: -2px;
+    }
+
+    .version {
         position: relative;
         display: block;
         margin-top: 14px;
@@ -477,21 +557,24 @@ if(empty($_SESSION)){
         color: var(--dumpthumb-font);
     }
 
-    .commenton{
+    .commenton {
         color: #5bcf24;
     }
-    .commentoff{
+
+    .commentoff {
         color: white;
     }
+
     .cc_css_reboot {
         position: fixed !important;
     }
-    .fa-angle-down{
+
+    .fa-angle-down {
         text-shadow: 0px 1px 3px #272634;
     }
 
     /* --------searchpage-------*/
-    .zoeken{
+    .zoeken {
         color: var(--dumpthumb-h1);
         font-size: 25px;
         position: absolute;
@@ -499,7 +582,8 @@ if(empty($_SESSION)){
         top: 12px;
         cursor: pointer;
     }
-    .searchpage{
+
+    .searchpage {
         background: var(--search-bg);
         color: #fff;
         font-weight: bold;
@@ -509,16 +593,19 @@ if(empty($_SESSION)){
         -khtml-user-select: none; /* Konqueror HTML */
         -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
-        user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+        user-select: none;
+        /* Non-prefixed version, currently
+                                         supported by Chrome and Opera */
         /*overflow-y: scroll;*/
         margin-top: 50px;
         z-index: 100000;
     }
-    .zoekbalk > p{
+
+    .zoekbalk > p {
         float: right;
         font-size: 1.4em !important;
     }
+
     .zoekblok {
         /* background-color: white; */
         /* padding: 5px; */
@@ -528,7 +615,8 @@ if(empty($_SESSION)){
         position: absolute;
         top: 0;
     }
-    .zoekplaceholder{
+
+    .zoekplaceholder {
         color: darkgray;
         font-size: 17px;
         right: -6px;
@@ -539,12 +627,14 @@ if(empty($_SESSION)){
         margin-left: 2px;
         position: relative;
     }
-    .zoekbar{
+
+    .zoekbar {
         display: table-cell;
         width: 98%;
         border: none;
         margin-left: 10px;
     }
+
     .zoekbg {
         background: white;
         display: table;
@@ -553,7 +643,8 @@ if(empty($_SESSION)){
         border-radius: 5px;
         margin-left: 5px;
     }
-    .zoekterug{
+
+    .zoekterug {
         color: var(--dumpthumb-h1);
         font-family: dumpertfont;
         text-transform: uppercase;
@@ -566,14 +657,17 @@ if(empty($_SESSION)){
         -khtml-user-select: none; /* Konqueror HTML */
         -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
-        user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+        user-select: none;
+        /* Non-prefixed version, currently
+                                         supported by Chrome and Opera */
     }
 
-    textarea, select, input, button { outline: none; }
+    textarea, select, input, button {
+        outline: none;
+    }
 
     /* --------instellingen--------*/
-    .instellingpopup{
+    .instellingpopup {
         background: #191919;
         height: 100vh;
         color: #fff;
@@ -584,26 +678,29 @@ if(empty($_SESSION)){
         -khtml-user-select: none; /* Konqueror HTML */
         -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
-        user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+        user-select: none;
+        /* Non-prefixed version, currently
+                                         supported by Chrome and Opera */
         display: none;
         position: fixed;
         width: 100%;
         z-index: 1000;
     }
 
-    .instellingen{
+    .instellingen {
         text-align: center;
         padding: 2px;
         margin-bottom: -16px;
     }
-    .instellingen > p{
+
+    .instellingen > p {
         font-weight: bold;
         text-transform: uppercase;
         font-size: 1.8em;
         font-family: dumpertfont;
     }
-    .instellingen > i{
+
+    .instellingen > i {
         font-weight: bold;
         text-transform: uppercase;
         font-size: 2em;
@@ -612,10 +709,12 @@ if(empty($_SESSION)){
         cursor: pointer;
         margin-top: 6px;
     }
-    .closesettings{
+
+    .closesettings {
         float: left;
     }
-    .instellingsection{
+
+    .instellingsection {
         padding: 6px 20px 6px 20px;
         background-color: #353535;
         width: 100%;
@@ -624,37 +723,44 @@ if(empty($_SESSION)){
         font-weight: bold;
         color: #969696;
     }
-    .knopveld{
+
+    .knopveld {
         padding: 20px;
-        border:1px solid #353535;
+        border: 1px solid #353535;
         margin-bottom: -1px;
         border-left: 0px;
         border-right: 0px;
         cursor: pointer;
     }
-    .knopveld.on > i{
+
+    .knopveld.on > i {
         display: block;
         color: #5bcf24;
     }
-    .knopveld.off > i{
+
+    .knopveld.off > i {
         display: none;
     }
-    .radio, .radio2{
+
+    .radio, .radio2 {
         float: right;
     }
 
-    .radio2{
+    .radio2 {
         font-size: 32px;
         margin-top: -4px;
         color: #5bcf24;
     }
-    .on{
+
+    .on {
         color: white;
     }
-    .off{
+
+    .off {
         color: gray;
     }
-    .versie{
+
+    .versie {
         text-align: center;
         color: gray;
         bottom: 0;
@@ -662,13 +768,16 @@ if(empty($_SESSION)){
         left: 0;
         right: 0;
     }
-    .imglist{
+
+    .imglist {
         width: auto;
         height: 150px;
     }
-    #picframe{
+
+    #picframe {
         overflow-y: scroll;
     }
+
     .zoekpreload {
         display: none;
         z-index: 1000;
@@ -681,17 +790,34 @@ if(empty($_SESSION)){
         width: 30px;
         margin: 0 auto;
     }
+
+    .imagepreloader {
+        display: none;
+        /* z-index: 1000; */
+        /* height: 70px; */
+        /* width: 70px !important; */
+        position: relative;
+        /* left: 0; */
+        /* right: 0; */
+        /* bottom: 75%; */
+        width: 55px;
+        margin: 0 auto;
+        top: 40%;
+    }
+
     /* preload designs */
     @keyframes clockwise {
         to {
             transform: rotate(360deg) translatez(0);
         }
     }
+
     @keyframes counter-clockwise {
         to {
             transform: rotate(-360deg) translatez(0);
         }
     }
+
     @keyframes bounce {
         50% {
             transform: translatey(-20px);
@@ -700,6 +826,7 @@ if(empty($_SESSION)){
             transform: translatey(20px);
         }
     }
+
     @keyframes zoom {
         to {
             width: calc(250px + 20px);
@@ -709,6 +836,7 @@ if(empty($_SESSION)){
             border-color: white;
         }
     }
+
     @keyframes follow {
         0% {
             transform: translatex(-45px);
@@ -717,6 +845,7 @@ if(empty($_SESSION)){
             transform: translatex(60px);
         }
     }
+
     .magic {
         background-color: transparent;
         width: 10px;
@@ -837,8 +966,8 @@ if(empty($_SESSION)){
     .ios div {
         width: 6px;
         height: 40px;
-        margin-top: calc(-40px/2);
-        margin-left: calc(-6px/2);
+        margin-top: calc(-40px / 2);
+        margin-left: calc(-6px / 2);
         position: absolute;
     }
 
@@ -962,7 +1091,7 @@ if(empty($_SESSION)){
         animation: follow 1s steps(7, end) infinite;
     }
 
-    .clearinput{
+    .clearinput {
         display: table-cell;
         width: 16px;
         float: right;
@@ -974,15 +1103,22 @@ if(empty($_SESSION)){
         -webkit-filter: grayscale(100%);
         display: none;
     }
-    /**,*/
-    /**:before,*/
-    /**:after {*/
-    /*    box-sizing: border-box;*/
-    /*}*/
 
-    /**:before, *:after {*/
-    /*    content: '';*/
-    /*}*/
+    .sl-overlay {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #000;
+        opacity: 0.6;
+        display: none;
+        z-index: 1035;
+    }
+
+    .sl-counter, .sl-prev, .sl-next, .sl-close {
+        color: white !important;
+    }
 
 </style>
 <body>
@@ -1037,6 +1173,29 @@ if(empty($_SESSION)){
     </div>
     <div class="versie"></div>
 </div>
+<div class="framelist">
+    <div id="terug" class="terug">
+        <div class="menubar">
+            <i id="lijstterug" title="Terug naar het menu" class="fas fa-angle-down" style="font-size:26px"></i>
+            <!--            <i id="searchterug" title="Terug naar het menu" class="fas fa-angle-down" style="font-size:26px; display: none;"></i>-->
+            <img class="info" src="fav.png" width="36px">
+            <i id="comtoggle" title="" class='fas fa-comments'></i>
+        </div>
+    </div>
+    <iframe id="vidplayer" src="" width="100%" height="500px" class="fullplayer" allowfullscreen></iframe>
+    <div id="picframe" class="dumpertpicplayer">
+        <a id="piclink" href="" target="_blank" title="volledige grote"><img id="picplayer" src=""></a>
+        <div class="imagepreloader">
+            <div class="conical">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="imageGallery"></div>
+    </div>
+    <iframe src="" width="100%" height="500px" class="commentpage" style="display: none;"></iframe>
+</div>
 <div id="nav">
     <div class="navinhoud mainnav">
         <img class="settingstoggle" src="menu.png">
@@ -1062,25 +1221,12 @@ if(empty($_SESSION)){
 </div>
 <div id="searchpage" class="searchpage" style="display: none">
 </div>
-<div class="lijst">
-</div>
-<div class="framelist">
-        <div id="terug" class="terug">
-            <div class="menubar">
-            <i id="lijstterug" title="Terug naar het menu" class="fas fa-angle-down" style="font-size:26px"></i>
-            <i id="searchterug" title="Terug naar het menu" class="fas fa-angle-down" style="font-size:26px; display: none;"></i>
-            <img class="info" src="fav.png" width="36px">
-            <i id="comtoggle" title="" class='fas fa-comments'></i>
-        </div>
+<div class="lijstwrapper">
+    <div class="lijst">
     </div>
-    <iframe id="vidplayer" src="" width="100%" height="500px" class="fullplayer" allowfullscreen></iframe>
-    <div id="picframe" class="dumpertpicplayer hidden">
-        <a id="piclink" href="" target="_blank" title="volledige grote"><img id="picplayer" src="" class="hidden"></a>
-        <div class="imageGallery">
-        </div>
-    </div>
-    <iframe src="" width="100%" height="500px" class="commentpage" style="display: none;"></iframe>
+    <div class="pagelijst"></div>
 </div>
+
 <script>
     var link = window.location.search;
     var nowactive = '';
@@ -1097,24 +1243,26 @@ if(empty($_SESSION)){
     var lijstpage = 1;
     var searchpageupdate = 0;
     var lastsearchid = 0;
+    var lastlijstid = 15;
+    var lijstpageupdate = 0;
 
-    var versie = '1.0.8';
+    var versie = '1.0.9';
 
-    if(link === "?run"){
-        window.open('index.php?running','Dumpert Notifications','width=800,height=1000,resizable=1');
-    }else if(link === "?running"){
+    if (link === "?run") {
+        window.open('index.php?running', 'Dumpert Notifications', 'width=800,height=1000,resizable=1');
+    } else if (link === "?running") {
         $('.notrunning').remove();
         $('.wrapper').show();
         $('#nav').show();
-    }else{
-        $('.lijst').remove();
+    } else {
+        $('.lijstwrapper').remove();
         $('#nav').remove();
     }
 
     function setCookie(cname, cvalue, exdays) {
         var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = "expires="+ d.toUTCString();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
@@ -1122,7 +1270,7 @@ if(empty($_SESSION)){
         var name = cname + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
+        for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
             while (c.charAt(0) == ' ') {
                 c = c.substring(1);
@@ -1136,13 +1284,23 @@ if(empty($_SESSION)){
 
     function updatefoto(site) {
         $.post("dumpertfotos.php", {'site': site}).done(function (data) {
-            $('.imageGallery').html(data);
+            $('.imagepreloader').hide();
+            if(data.startsWith("fotos/") === true){
+                $('#piclink').show();
+                $('.picplaylist').hide();
+                $('.imageGallery').hide();
+            }else{
+                $('.imageGallery').show();
+                $('.imageGallery').html(data);
+            }
             $('#picplayer').attr('src', data);
             $('#piclink').attr('href', data);
             // or if using jQuery
             $('.imageGallery a').simpleLightbox();
+            $('.picframe a').simpleLigtbox();
         })
     }
+
     function updatecomment(site) {
         $.post("dumpertcomments.php", {'site': site}).done(function (data) {
             $('.commentpage').attr('src', data);
@@ -1151,43 +1309,49 @@ if(empty($_SESSION)){
 
     function search(key) {
         searchpageupdate = 1;
-        $.post("search.php", {'filter': key, 'nsfw': nsfw, 'page': searchpage, 'lastsearchid': lastsearchid}).done(function (data) {
+        $.post("search.php", {
+            'filter': key,
+            'nsfw': nsfw,
+            'page': searchpage,
+            'lastsearchid': lastsearchid
+        }).done(function (data) {
             lastsearchid = lastsearchid + 15;
             searchpageupdate = 0;
             $('.zoekpreload').hide();
             $(".searchpage").append(data);
             $('.linkbtn').click(function () {
-                $('#lijstterug').hide();
+                // $('#lijstterug').hide();
+                $('#terug').show();
                 var id = this.id;
                 var val = $('#link' + id).text();
                 var site = $('#info' + id).text();
                 nowactive = id;
 
-                if($('#thumb' + nowactive).hasClass('foto') === true){
+                if ($('#thumb' + nowactive).hasClass('foto') === true) {
                     updatefoto(site);
                     $('#vidplayer').hide();
                     $('#picframe').show();
-                    $('#searchterug').show();
-                }else{
+                    $('.imagepreloader').show();
+                } else {
                     $('#picframe').hide();
                     $('#vidplayer').show();
                     $('#vidplayer').attr('src', val);
-                    $('#searchterug').show();
                 }
+                $('#searchterug').show();
                 $('.framelist').show();
-                $('.wrapper ').hide();
-                $('.searchpage').hide();
-                $('.lijst').hide();
-                $('#nav').hide();
+                // $('.wrapper ').hide();
+                // $('.searchpage').hide();
+                // $('.lijst').hide();
+                // $('#nav').hide();
                 updatecomment(site);
-                if(comments == "on"){
-                    window.resizeTo(800,935);
-                }else{
-                    window.resizeTo(800,500);
+                if (comments == "on") {
+                    window.resizeTo(800, 935);
+                } else {
+                    window.resizeTo(800, 500);
                 }
             });
             $(".info").click(function () {
-                if(count < 1){
+                if (count < 1) {
                     var val = $('#info' + nowactive).text();
                     window.open(val);
                     count++;
@@ -1195,47 +1359,93 @@ if(empty($_SESSION)){
             });
         });
     }
+
     updatelist();
     setInterval(function () {
         updatelist();
     }, 30000);
 
     function updatelist(melding) {
-        if (melding == null){
+        if (melding == null) {
             melding = '';
         }
         $.post("dumpertmelding2.php", {'filter': filter, 'silent': melding, 'nsfw': nsfw}).done(function (data) {
             $(".lijst").html(data);
             $('.linkbtn').click(function () {
-                $('#searchterug').hide();
-                $('#lijstterug').show();
+                $('#terug').show();
+                // $('#searchterug').hide();
+                // $('#lijstterug').show();
                 var id = this.id;
                 var val = $('#link' + id).text();
                 var site = $('#info' + id).text();
                 nowactive = id;
 
-                if($('#thumb' + nowactive).hasClass('foto') === true){
+                if ($('#thumb' + nowactive).hasClass('foto') === true) {
                     updatefoto(site);
                     $('#vidplayer').hide();
                     $('#picframe').show();
-                }else{
+                } else {
                     $('#picframe').hide();
                     $('#vidplayer').show();
                     $('#vidplayer').attr('src', val);
                 }
                 $('.framelist').show();
-                $('.wrapper ').hide();
-                $('.lijst').hide();
-                $('#nav').hide();
+                // $('.wrapper ').hide();
+                // $('.lijst').hide();
+                // $('#nav').hide();
                 updatecomment(site);
-                if(comments == "on"){
-                    window.resizeTo(800,935);
-                }else{
-                    window.resizeTo(800,500);
+                if (comments == "on") {
+                    window.resizeTo(800, 935);
+                } else {
+                    window.resizeTo(800, 500);
                 }
             });
             $(".info").click(function () {
-                if(count < 1){
+                if (count < 1) {
+                    var val = $('#info' + nowactive).text();
+                    window.open(val);
+                    count++;
+                }
+            });
+        });
+    }
+
+    function pagelist() {
+        lijstpageupdate = 1;
+        $.post("dumpertmelding.php", {'filter': filter, 'nsfw': nsfw, 'page': lijstpage, 'lastid' : lastlijstid}).done(function (data) {
+            lijstpageupdate = 0;
+            lastlijstid = lastlijstid + 15;
+            $(".pagelijst").append(data);
+            $('.linkbtn').click(function () {
+                $('#terug').show();
+                var id = this.id;
+                var val = $('#link' + id).text();
+                var site = $('#info' + id).text();
+                nowactive = id;
+
+                if ($('#thumb' + nowactive).hasClass('foto') === true) {
+                    updatefoto(site);
+                    $('#vidplayer').hide();
+                    $('#picframe').show();
+                } else {
+                    $('#picframe').hide();
+                    $('#vidplayer').show();
+                    $('.imagepreloader').hide();
+                    $('#vidplayer').attr('src', val);
+                }
+                $('.framelist').show();
+                // $('.wrapper ').hide();
+                // $('.lijst').hide();
+                // $('#nav').hide();
+                updatecomment(site);
+                if (comments == "on") {
+                    window.resizeTo(800, 935);
+                } else {
+                    window.resizeTo(800, 500);
+                }
+            });
+            $(".info").click(function () {
+                if (count < 1) {
                     var val = $('#info' + nowactive).text();
                     window.open(val);
                     count++;
@@ -1245,7 +1455,7 @@ if(empty($_SESSION)){
     }
 
 
-    function opstarten(){
+    function opstarten() {
         // var status = "off";
         // if($( "#toggle" ).hasClass( "on" ) == true){
         //     status = "on";
@@ -1253,12 +1463,12 @@ if(empty($_SESSION)){
         //     status = "off";
         // }
         // $.post("ajax.php", {'status': 'commentToggle', 'val': status});
-        window.open('index.php?running','Dumpert Notifications','width=800,height=1000,resizable=1');
+        window.open('index.php?running', 'Dumpert Notifications', 'width=800,height=1000,resizable=1');
     }
 
     function popmelding(melding) {
-        if(melding !== "silent"){
-            Push.create("Dumpert Notificatie",{
+        if (melding !== "silent") {
+            Push.create("Dumpert Notificatie", {
                 body: "Er zijn weer nieuwe videos geupload!",
                 icon: 'fav.png',
                 timeout: 10000,
@@ -1267,6 +1477,9 @@ if(empty($_SESSION)){
                     this.close();
                 }
             });
+            $('.pagelijst').html('');
+            lastlijstid = 15;
+            lijstpage = 1;
         }
     }
 
@@ -1274,15 +1487,29 @@ if(empty($_SESSION)){
         $('#terug').stop().fadeIn();
     });
 
-    $("#vidplayer, #terug, .dumpertpicplayer").mouseleave(function() {
+    $("#vidplayer, #terug, .dumpertpicplayer").mouseleave(function () {
         $('#terug').stop().fadeOut();
     });
 
+    // $("#lijstterug").click(function () {
+    //     window.resizeTo(xsize,ysize);
+    //     $('.lijst').show();
+    //     $('.wrapper ').show();
+    //     $('#nav').show();
+    //     $('.framelist').hide();
+    //     $(window).scrollTop(scrolltop);
+    //     $('#vidplayer').attr('src', '');
+    //     $('.commentpage').attr('src', '');
+    //     $('#picplayer').attr('src', '');
+    //     $('#piclink').attr('href', '');
+    //     $('.imageGallery').html('');
+    //     count = 0;
+    // });
     $("#lijstterug").click(function () {
-        window.resizeTo(xsize,ysize);
-        $('.lijst').show();
-        $('.wrapper ').show();
-        $('#nav').show();
+        window.resizeTo(xsize, ysize);
+        // $('.lijst').show();
+        // $('.wrapper ').show();
+        // $('#nav').show();
         $('.framelist').hide();
         $(window).scrollTop(scrolltop);
         $('#vidplayer').attr('src', '');
@@ -1294,8 +1521,8 @@ if(empty($_SESSION)){
     });
 
     $('#searchterug').click(function () {
-        window.resizeTo(xsize,ysize);
-        $('.lijst').hide();
+        window.resizeTo(xsize, ysize);
+        $('.lijstwrapper').hide();
         $('.searchpage').show();
         $('.wrapper ').show();
         $('#nav').show();
@@ -1310,28 +1537,28 @@ if(empty($_SESSION)){
     });
 
     $(".zoekterug").click(function () {
-        $('.zoekblok').stop().toggle( "slide" );
-        $('.lijst').stop().fadeIn();
+        $('.zoekblok').stop().toggle("slide");
+        $('.lijstwrapper').stop().fadeIn();
         // $('.searchpage').fadeOut();
         setTimeout(function () {
             $('.zoekbar').val('');
             $('.searchpage').html('');
             $('.clearinput').hide();
-        },250);
+        }, 250);
         $('.zoekbar').focus();
     });
 
     $(".zoeken ").click(function () {
-        $('.zoekblok').stop().toggle( "slide" );
-        $('.lijst').stop().fadeOut();
+        $('.zoekblok').stop().toggle("slide");
+        $('.lijstwrapper').stop().fadeOut();
         $('.searchpage').fadeIn();
         $('.zoekbar').focus();
     });
 
-    $('.zoekbar').on('keyup',function(e) {
-        if( $(this).val().length !== 0 ) {
+    $('.zoekbar').on('keyup', function (e) {
+        if ($(this).val().length !== 0) {
             $('.clearinput').show();
-        }else{
+        } else {
             $('.clearinput').hide();
         }
         if (e.which == 13) {
@@ -1349,9 +1576,9 @@ if(empty($_SESSION)){
         $('.zoekbar').val('');
         $('.clearinput').hide();
     });
-    
+
     $(".nightmodeknop").click(function () {
-        if($("#nightmode").hasClass("on") === true) {
+        if ($("#nightmode").hasClass("on") === true) {
             nightmode = "off";
             setCookie('nightmode', 0, 60);
             $("#nightmode").attr("class", "radio off");
@@ -1370,7 +1597,7 @@ if(empty($_SESSION)){
     });
 
     $(".nsfwknop").click(function () {
-        if($("#nsfw").hasClass("on") === true) {
+        if ($("#nsfw").hasClass("on") === true) {
             nsfw = 'deleted';
             setCookie('nsfw', 'deleted', 60);
             $("#nsfw").attr("class", "radio off");
@@ -1387,7 +1614,7 @@ if(empty($_SESSION)){
     });
 
     $('.commentsknop').on('click', function () {
-        if($('#toggle').hasClass("on") === true) {
+        if ($('#toggle').hasClass("on") === true) {
             comments = "off";
             setCookie('comments', 0, 60);
             $('.commentpage').hide();
@@ -1397,7 +1624,7 @@ if(empty($_SESSION)){
             $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
             $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer');
             $(".commentsknop").attr("class", "knopveld off commentsknop");
-        }else {
+        } else {
             comments = "on";
             setCookie('comments', 1, 60);
             $('.commentpage').show();
@@ -1426,7 +1653,7 @@ if(empty($_SESSION)){
 
 
     $('#comtoggle').on('click', function () {
-        if($('#comtoggle').hasClass("commenton") === true) {
+        if ($('#comtoggle').hasClass("commenton") === true) {
             comments = "off";
             setCookie('comments', 0, 60);
             $('.commentpage').hide();
@@ -1436,8 +1663,8 @@ if(empty($_SESSION)){
             $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
             $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer');
             $(".commentsknop").attr("class", "knopveld off commentsknop");
-            window.resizeTo(800,500);
-        }else {
+            window.resizeTo(800, 500);
+        } else {
             comments = "on";
             setCookie('comments', 1, 60);
             $('.commentpage').show();
@@ -1447,7 +1674,7 @@ if(empty($_SESSION)){
             $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
             $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
             $(".commentsknop").attr("class", "knopveld on commentsknop");
-            window.resizeTo(800,935);
+            window.resizeTo(800, 935);
         }
         // $.post("ajax.php", {'status': 'commentToggle', 'val': comments});
     });
@@ -1489,36 +1716,34 @@ if(empty($_SESSION)){
 
     $(document).ready(function () {
         filterdata = getCookie('filter');
-            if(filterdata == "alles") {
-                filter = "alles";
-                $("#alles").attr("class", "knopveld on");
-                $("#alleenfilmpjes").attr("class", "knopveld off");
-                $("#alleenplaatjes").attr("class", "knopveld off");
-                // $.post("ajax.php", {'status': 'filterradio', 'val': filter});
-                updatelist('silent');
-            }
-            else if(filterdata == "alleenfilmpjes") {
-                filter = "alleenfilmpjes";
-                $("#alleenfilmpjes").attr("class", "knopveld on");
-                $("#alles").attr("class", "knopveld off");
-                $("#alleenplaatjes").attr("class", "knopveld off");
-                // $.post("ajax.php", {'status': 'filterradio', 'val': filter});
-                updatelist('silent');
-            }
-            else if(filterdata == "alleenplaatjes") {
-                filter = "alleenplaatjes";
-                $("#alleenplaatjes").attr("class", "knopveld on");
-                $("#alleenfilmpjes").attr("class", "knopveld off");
-                $("#alles").attr("class", "knopveld off");
-                // $.post("ajax.php", {'status': 'filterradio', 'val': filter});
-                updatelist('silent');
-            }else{
-                filter = "alleen";
-            }
-        });
+        if (filterdata == "alles") {
+            filter = "alles";
+            $("#alles").attr("class", "knopveld on");
+            $("#alleenfilmpjes").attr("class", "knopveld off");
+            $("#alleenplaatjes").attr("class", "knopveld off");
+            // $.post("ajax.php", {'status': 'filterradio', 'val': filter});
+            updatelist('silent');
+        } else if (filterdata == "alleenfilmpjes") {
+            filter = "alleenfilmpjes";
+            $("#alleenfilmpjes").attr("class", "knopveld on");
+            $("#alles").attr("class", "knopveld off");
+            $("#alleenplaatjes").attr("class", "knopveld off");
+            // $.post("ajax.php", {'status': 'filterradio', 'val': filter});
+            updatelist('silent');
+        } else if (filterdata == "alleenplaatjes") {
+            filter = "alleenplaatjes";
+            $("#alleenplaatjes").attr("class", "knopveld on");
+            $("#alleenfilmpjes").attr("class", "knopveld off");
+            $("#alles").attr("class", "knopveld off");
+            // $.post("ajax.php", {'status': 'filterradio', 'val': filter});
+            updatelist('silent');
+        } else {
+            filter = "alleen";
+        }
+    });
 
-    $(window).resize(function(){
-        if($('.lijst').is(":visible")){
+    $(window).resize(function () {
+        if ($('.lijstwrapper').is(":visible")) {
             xsize = $(window).width() + 15;
             ysize = $(window).height() + 64;
         }
@@ -1531,40 +1756,40 @@ if(empty($_SESSION)){
 
         var cookies = $(".cc_dialog");
 
-        if ( cookies.length){
+        if (cookies.length) {
             $('.ctabtn').attr("disabled", true);
-            $('button[class=ctabtn]').css( 'cursor', 'not-allowed' );
+            $('button[class=ctabtn]').css('cursor', 'not-allowed');
 
             $('.cc_b_ok').on('click', function () {
                 $('.ctabtn').attr("disabled", false);
-                $('button[class=ctabtn]').css( 'cursor', 'pointer' );
+                $('button[class=ctabtn]').css('cursor', 'pointer');
             })
         }
 
         setTimeout(function () {
             // $.post("ajax.php", {'status': 'checkToggleState'}).done(function (data) {
-                commentdata = getCookie('comments');
-                if(commentdata == 1) {
-                    comments = "on";
-                    $("#toggle").attr("class", "radio on");
-                    $('.commentpage').show();
-                    $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
-                    $('#terug').addClass('terugsplit').removeClass('terugfull');
-                    $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
-                    $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
-                    $(".commentsknop").attr("class", "knopveld on commentsknop");
-                } else {
-                    comments = "off";
-                    $("#toggle").attr("class", "radio off");
-                    $('.commentpage').hide();
-                    $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
-                    $('#terug').addClass('terugfull').removeClass('terugsplit');
-                    $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer').attr('title', 'Schakel de comments in');
-                    $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
-                    $(".commentsknop").attr("class", "knopveld off commentsknop");
-                }
+            commentdata = getCookie('comments');
+            if (commentdata == 1) {
+                comments = "on";
+                $("#toggle").attr("class", "radio on");
+                $('.commentpage').show();
+                $('#vidplayer').addClass('dumpertembed').removeClass('fullplayer');
+                $('#terug').addClass('terugsplit').removeClass('terugfull');
+                $('#picframe').addClass('dumpertpicplayer').removeClass('dumpertpicplayerfull');
+                $('#comtoggle').addClass('commenton').removeClass('commentoff').attr('title', 'Schakel de comments uit');
+                $(".commentsknop").attr("class", "knopveld on commentsknop");
+            } else {
+                comments = "off";
+                $("#toggle").attr("class", "radio off");
+                $('.commentpage').hide();
+                $('#vidplayer').addClass('fullplayer').removeClass('dumpertembed');
+                $('#terug').addClass('terugfull').removeClass('terugsplit');
+                $('#picframe').addClass('dumpertpicplayerfull').removeClass('dumpertpicplayer').attr('title', 'Schakel de comments in');
+                $('#comtoggle').addClass('commentoff').removeClass('commenton').attr('title', 'Schakel de comments in');
+                $(".commentsknop").attr("class", "knopveld off commentsknop");
+            }
         }, 250);
-        if(getCookie('nightmode') == 1){
+        if (getCookie('nightmode') == 1) {
             nightmode = "on";
             $(".settingstoggle").toggle();
             $("#nightmode").attr("class", "radio on");
@@ -1572,8 +1797,8 @@ if(empty($_SESSION)){
             $("body").attr("class", "notrans nightmode");
             setTimeout(function () {
                 $("body").attr("class", "nightmode");
-            },500)
-        }else{
+            }, 500)
+        } else {
             nightmode = "off";
             $("#nightmode").attr("class", "radio off");
             $(".nightmodeknop").attr("class", "knopveld off nightmodeknop");
@@ -1597,11 +1822,11 @@ if(empty($_SESSION)){
         //     }
         // });
 
-        if(getCookie('nsfw') == 1){
+        if (getCookie('nsfw') == 1) {
             nsfw = "1";
             $("#nsfw").attr("class", "radio on");
             $(".nsfwknop").attr("class", "knopveld on nsfwknop");
-        }else{
+        } else {
             nsfw = "deleted";
             $("#nsfw").attr("class", "radio off");
             $(".nsfwknop").attr("class", "knopveld off nsfwknop");
@@ -1619,18 +1844,35 @@ if(empty($_SESSION)){
         // });
     });
 
-
     $(window).scroll(function () {
-        if($('.searchpage').is(":visible")){
-        if ($(window).scrollTop() + $(window).height() >=
-            $('.searchpage').offset().top + $('.searchpage').height() ) {
-            if(searchpageupdate == 0){
-                searchpage++;
-                var searchkey = $('.zoekbar').val();
-                console.log(searchpage);
-                search(searchkey);
+        if ($(window).scrollTop() !== 0) {
+            scrolltop = $(window).scrollTop();
+        }
+    });
+    $(window).scroll(function () {
+        if ($('.searchpage').is(":visible")) {
+            if ($(window).scrollTop() + $(window).height() >=
+                $('.searchpage').offset().top + $('.searchpage').height()) {
+                if (searchpageupdate == 0) {
+                    searchpage++;
+                    var searchkey = $('.zoekbar').val();
+                    console.log(searchpage);
+                    search(searchkey);
+                }
             }
-        }}
+        }
+    });
+    $(window).scroll(function () {
+        if ($('.lijstwrapper').is(":visible")) {
+            if ($(window).scrollTop() + $(window).height() >=
+                $('.lijstwrapper').offset().top + $('.lijstwrapper').height()) {
+                if (lijstpageupdate == 0) {
+                    lijstpage++;
+                    console.log(lijstpage);
+                    pagelist();
+                }
+            }
+        }
     });
 
 </script>
